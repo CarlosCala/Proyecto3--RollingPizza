@@ -1,3 +1,8 @@
+### Para ejecutar nuestra base de datos (ejecutarlo en otra terminal/consola aparte a la de react)
+
+json-server --watch db.json --port 3001
+json-server --watch user.json --port 3001
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

@@ -1,0 +1,28 @@
+{
+  "users": [
+    {
+      "userName": "pepa321",
+      "email": "pepa@gmail.com",
+      "password": "carlos1234",
+      "status": "active",
+      "admin": "active",
+      "id": 1
+    },
+    {
+      "userName": "carlosDarrin",
+      "email": "carlos@gmail.com",
+      "password": "carlos1234",
+      "status": "inactive",
+      "admin": "administrador",
+      "id": 3
+    },
+    {
+      "userName": "carlos",
+      "email": "carlos@gmail.com",
+      "password": "carlos1234",
+      "status": "active",
+      "admin": "usuario",
+      "id": 2
+    }
+  ]
+}
