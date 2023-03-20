@@ -24,7 +24,7 @@ const AdminTable = ({ products, URL, getApi }) => {
             Product Control
           </Link>
           <Link
-            to="/product/create"
+            to=""
             className="btn-orange  text-decoration-none text-center"
           >
             Order Control
@@ -54,6 +54,7 @@ const AdminTable = ({ products, URL, getApi }) => {
                 <th>Name</th>
                 <th>Price</th>
                 <th>Image url</th>
+                <th>category</th>
                 <th>Actions</th>
               </tr>
             </thead>

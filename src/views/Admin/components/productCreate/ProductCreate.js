@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import { Container, Form } from "react-bootstrap";
 import Swal from "sweetalert2";
-// import {
-//   validateProductName,
-//   validatePrice,
-//   validateUrl,
-//   validateCategory,
-// } from "../../helpers/validateFields";
+import {
+  validateProductName,
+  validatePrice,
+  validateUrl,
+  validateCategory,
+} from "../../../../helpers/validateFields";
 import { useNavigate } from "react-router-dom";
 import axios from "../../../../config/axiosInit";
 
@@ -29,21 +29,21 @@ const ProductCreate = ({ URL, getApi }) => {
     // console.log(inputs);
     // console.log("===================");
 
-    // if (
+    if (
     //   // diferentes validaciones para cada input
     //   //   !validateProductName(productName) ||
     //   //  !validatePrice(price) ||
     //   //  !validateUrl(urlImg) ||
     //   //  !validateCategory(category)
 
-    //   !validateProductName(inputs.productName) ||
-    //   !validatePrice(inputs.price) ||
-    //   !validateUrl(inputs.urlImg) ||
-    //   !validateCategory(inputs.category)
-    // ) {
-    //   Swal.fire("oops! ", "Some data is invalid", "error");
-    //   return;
-    // }
+      !validateProductName(inputs.productName) ||
+      !validatePrice(inputs.price) ||
+      !validateUrl(inputs.urlImg) ||
+      !validateCategory(inputs.category)
+    ) {
+      Swal.fire("oops! ", "Some data is invalid", "error");
+      return;
+    }
     //enviar los datos
     const newProduct = {
       // cuando key y value tienen el mismo nombre se coloca solo una vez
@@ -70,15 +70,6 @@ const ProductCreate = ({ URL, getApi }) => {
     }).then(async (result) => {
       if (result.isConfirmed) {
         try {
-          // la peticion post con fetch
-          // const res = await fetch(URL, {
-          //   method: 'POST',
-          //   headers: {
-          //     "content-type" : "application/json",
-          //     // "x-access-token" : JSON.parse(localStorage.getItem(("user-token"))).token
-          //   },
-          //   body: JSON.stringify(newProduct)})
-
           //  peticion con axios
           const res = await axios.post(URL, newProduct, {
             headers: {
@@ -125,8 +116,6 @@ const ProductCreate = ({ URL, getApi }) => {
               name="productName"
               value={inputs.productName || ""}
               onChange={(e) => handleChange(e)}
-              //funcion que se dispara cuando enviemos el formulario, seteando el producto
-              // onChange={({ target }) => setProductName(target.value)}
             />
           </Form.Group>
           <Form.Group className="mb-3" controlId="formBasicPassword">
@@ -137,8 +126,6 @@ const ProductCreate = ({ URL, getApi }) => {
               name="price"
               value={inputs.price || ""}
               onChange={(e) => handleChange(e)}
-
-              // onChange={({ target }) => setPrice(target.value)}
             />
           </Form.Group>
           <Form.Group className="mb-3" controlId="formBasicPassword">
@@ -149,7 +136,6 @@ const ProductCreate = ({ URL, getApi }) => {
               name="urlImg"
               value={inputs.urlImg || ""}
               onChange={(e) => handleChange(e)}
-              // onChange={({ target }) => setUrlImg(target.value)}
             />
           </Form.Group>
           <Form.Group className="mb-3" controlId="formBasicCheckbox">
@@ -158,7 +144,6 @@ const ProductCreate = ({ URL, getApi }) => {
               name="category"
               value={inputs.category || ""}
               onChange={(e) => handleChange(e)}
-              // onChange={({ target }) => setCategory(target.value)}
             >
               <option value="">Select an option</option>
               <option value="italiana">Italiana</option>

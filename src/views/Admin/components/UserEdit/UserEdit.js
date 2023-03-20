@@ -1,7 +1,9 @@
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useEffect, useRef, useState } from "react";
 import { Container, Form } from "react-bootstrap";
 import { useNavigate, useParams } from "react-router-dom";
 import Swal from "sweetalert2";
+
 // import {
 //   validateCategory,
 //   validatePrice,
@@ -105,12 +107,14 @@ const UserEdit = ({ UrlUser, getApiUser }) => {
   return (
     <div>
       <Container className="py-5">
-        <h1>Edit User</h1>
+        <div className="EditUser">
+        <h1 className="display-5">Edit User</h1>
+        </div>
         <hr />
         {/* Form Product */}
         <Form className="my-5" onSubmit={handleSubmit}>
           <Form.Group className="mb-3" controlId="formBasicEmail">
-            <Form.Label>User name*</Form.Label>
+            <Form.Label>User name* </Form.Label>
             <Form.Control
               type="text"
               defaultValue={user.userName}
