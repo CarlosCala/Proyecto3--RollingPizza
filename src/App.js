@@ -4,7 +4,7 @@ import AdminTable from "./views/Admin/AdminTable";
 import "bootstrap/dist/css/bootstrap.min.css";
 import axios from "./config/axiosInit";
 import { useEffect, useState } from "react";
-import Home from "./views/home/Home";
+import Home from "./views/home/home";
 import UserTable from "./views/Admin/UserTable";
 import ProductEdit from "./views/Admin/components/productEdit/ProductEdit";
 import ProductCreate from "./views/Admin/components/productCreate/ProductCreate";
@@ -81,9 +81,9 @@ function App() {
           />
           <Route exact path="/auth/register/" element={<Register />} />
 
-          {/* <Route
+          <Route
             exact
-            path="/user/register"
+            path="/user/table"
             element={
               <UserTable
                 users={users}
@@ -91,7 +91,7 @@ function App() {
                 UrlUser={UrlUser}
               />
             }
-          /> */}
+          />
           <Route
             exact
             path="/user/edit/:id"

@@ -30,7 +30,7 @@ const AdminTable = ({ products, URL, getApi }) => {
             Order Control
           </Link>
           <Link
-            to="/user/register"
+            to="/user/table"
             className="btn-orange  text-decoration-none text-center"
           >
             User Control

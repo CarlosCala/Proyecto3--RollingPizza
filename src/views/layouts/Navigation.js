@@ -24,6 +24,9 @@ const Navigation = ({ loggedUser, setLoggedUser }) => {
               <Link className="nav-link" to="/">
                 Home
               </Link>
+              <Link className="nav-link" to="/product/table">
+                admin
+              </Link>
               {loggedUser.token ? (
                 <>
                   <Button variant="dark" onClick={logout}>

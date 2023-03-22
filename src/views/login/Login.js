@@ -9,7 +9,7 @@ const Login = ({ setLoggedUser }) => {
   const [error, setError] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
 
-  const URL = process.env.REACT_APP_API_HAMBURGUESERIA_USUARIO;
+  const URL = process.env.REACT_APP_API_USARIOS;
   const handleChange = (event) => {
     const name = event.target.name;
     const value = event.target.value;
@@ -24,16 +24,7 @@ const Login = ({ setLoggedUser }) => {
     //===========  en helpers realizar las validaciones para email
     //Envio los datos
     try {
-      /* const res = await fetch(`${URL}/login`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          email: inputs.email,
-          password: inputs.password,
-        }),
-      }); */
+
       const res = await axios.post(`${URL}/login`, {
         email: inputs.email,
         password: inputs.password,
@@ -43,7 +34,7 @@ const Login = ({ setLoggedUser }) => {
         //const data = await res.json(); //si es con fetch
         const data = res.data;
                //guardar en localStorage el token
-        localStorage.setItem("user-token", JSON.stringify(data));
+        localStorage.setItem(JSON.stringify(data));
         setLoggedUser(data);
         navigate("/");
       }
@@ -91,11 +82,11 @@ const Login = ({ setLoggedUser }) => {
             <button className="btn-yellow">Send</button>
           </div>
         </Form>
-        {error ? (
+        {/* {error ? (
           <Alert variant="danger" onClick={() => setError(false)} dismissible>
             {errorMessage}
           </Alert>
-        ) : null}
+        ) : null} */}
       </Container>
     </div>
   );
