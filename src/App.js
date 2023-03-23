@@ -20,7 +20,7 @@ function App() {
   const [loggedUser, setLoggedUser] = useState({});
   const [users, setUsers] = useState([]);
 
-  const URL = process.env.REACT_APP_API_HAMBURGUESERIA;
+  const URL = process.env.REACT_APP_API_PIZZERIA;
   const UrlUser = process.env.REACT_APP_API_USARIOS;
 
   useEffect(() => {
@@ -43,13 +43,17 @@ function App() {
 
   const getApiUser = async () => {
     try {
-      const res = await axios.get(UrlUser);
+      const res = await axios.get(UrlUser+ "/table");
       const userApi = res.data;
+      console.log("************");
+      console.log(userApi);
+      console.log("************");
       setUsers(userApi);
     } catch (error) {
       console.log(error);
     }
   };
+  console.log(users, "soy los users");
 
   return (
     <>
@@ -71,7 +75,7 @@ function App() {
           />
           <Route
             exact
-            path="/product/edit/:id"
+            path="/product/edit/:_id"
             element={<ProductEdit URL={URL} getApi={getApi} />}
           />
           <Route
@@ -94,7 +98,7 @@ function App() {
           />
           <Route
             exact
-            path="/user/edit/:id"
+            path="/user/edit/:_id"
             element={<UserEdit UrlUser={UrlUser} getApiUser={getApiUser} />}
           />
         </Routes>

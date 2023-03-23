@@ -23,10 +23,10 @@ const UserTable = ({ users, UrlUser, getApiUser }) => {
             Order Control
           </Link>
           <Link
-            to="/user/register"
+            to="/user/table"
             className="btn btn-outline-danger"
           >
-            User Control
+            User Controll
           </Link>
         </div>
         <hr />
@@ -38,7 +38,7 @@ const UserTable = ({ users, UrlUser, getApiUser }) => {
               <th>N.</th>
               <th>Name</th>
               <th>email</th>
-              <th>password</th>
+              {/* <th>password</th> */}
               <th>status</th>
               <th>Admin</th>
               <th>Actions</th>
@@ -46,14 +46,15 @@ const UserTable = ({ users, UrlUser, getApiUser }) => {
             </tr>
           </thead>
           <tbody>
-            {users?.map((user) => (
-              <User
-                key={user.id}
-                user={user}
-                UrlUser={UrlUser}
-                getApiUser={getApiUser}
-              />
-            ))}
+          {users?.map((user) => (
+            <User
+              key={user.id}
+              user={user}
+              UrlUser={UrlUser}
+              getApiUser={getApiUser}
+              users={users}
+            />
+          ))}
           </tbody>
         </Table>
         :

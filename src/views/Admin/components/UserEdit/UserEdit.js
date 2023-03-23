@@ -16,11 +16,11 @@ const UserEdit = ({ UrlUser, getApiUser }) => {
   //steate
   const [user, setUser] = useState({});
   //useParams
-  const { id } = useParams();
+  const {_id} = useParams();
+  console.log('soy el id', _id,UrlUser );
   //variables de referencia - references
   const userNameRef = useRef("");
   const userEmailRef = useRef("");
-  const userPassword = useRef("");
   const navigate = useNavigate();
 
   //llamado a la api para obtener el usuario con su id
@@ -32,7 +32,7 @@ const UserEdit = ({ UrlUser, getApiUser }) => {
   const getOne = async () => {
     try {
       //peticion con axios
-      const res = await axios.get(`${UrlUser}/${id}`);
+      const res = await axios.get(`${UrlUser}/${_id}`);
       const userApi = await res.data;
       console.log("===================");
       console.log(userApi);
@@ -59,9 +59,8 @@ const UserEdit = ({ UrlUser, getApiUser }) => {
     //    return;
     //  }// guardar el objeto
     const userUpdate = {
-      userName: userNameRef.current.value,
+      name: userNameRef.current.value,
       email: userEmailRef.current.value,
-      password: userPassword.current.value,
       status: user.status,
       admin: user.admin,
     };
@@ -77,22 +76,25 @@ const UserEdit = ({ UrlUser, getApiUser }) => {
     }).then(async (result) => {
       if (result.isConfirmed) {
         try {
-          const res = await fetch(`${UrlUser}/${id}`, {
-            method: "PUT",
+          // const res = await fetch(`${UrlUser}/${_id}`, {
+          //   method: "PUT",
+          //   headers: {
+          //     "content-type": "application/json",
+          //   },
+          //   body: JSON.stringify(userUpdate),
+          // });
+
+          const res = await axios.put(`${UrlUser}/${_id}` , userUpdate,{
             headers: {
               "content-type": "application/json",
-            },
-            body: JSON.stringify(userUpdate),
-          });
-
-          // const res = await axios.put(`${URL}/${id}` , productUpdate)
-          console.log(res.data);
+            }})
+          console.log(userUpdate, 'que soy');
 
           if (res.status === 200) {
             Swal.fire("Update", "your file has been updated", "succes");
           }
           getApiUser();
-          navigate("/user/register");
+          navigate("/user/table");
         } catch (error) {
           Swal.fire({
             icon: "error",
@@ -117,9 +119,9 @@ const UserEdit = ({ UrlUser, getApiUser }) => {
             <Form.Label>User name* </Form.Label>
             <Form.Control
               type="text"
-              defaultValue={user.userName}
+              defaultValue={user.name}
               ref={userNameRef}
-              disabled
+              
             />
           </Form.Group>
           <Form.Group className="mb-3" controlId="formBasicPassword">
@@ -132,7 +134,7 @@ const UserEdit = ({ UrlUser, getApiUser }) => {
               disabled
             />
           </Form.Group>
-          <Form.Group className="mb-3" controlId="formBasicPassword">
+          {/* <Form.Group className="mb-3" controlId="formBasicPassword">
             <Form.Label>password*</Form.Label>
             <Form.Control
               type="text"
@@ -140,7 +142,7 @@ const UserEdit = ({ UrlUser, getApiUser }) => {
               ref={userPassword}
               disabled
             />
-          </Form.Group>
+          </Form.Group> */}
           <Form.Group className="mb-3" controlId="formBasicPassword">
             <Form.Label>status*</Form.Label>
             <Form.Select

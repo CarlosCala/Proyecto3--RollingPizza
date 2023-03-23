@@ -14,7 +14,7 @@ const ProductEdit = ({ URL, getApi }) => {
   //steate
   const [product, setProduct] = useState({});
   //useParams
-  const { id } = useParams();
+  const { _id } = useParams();
   //variables de referencia - references
   const productNameRef = useRef("");
   const productPriceRef = useRef("");
@@ -31,7 +31,7 @@ const ProductEdit = ({ URL, getApi }) => {
   const getOne = async () => {
     try {
       //peticion con axios
-      const res = await axios.get(`${URL}/${id}`);
+      const res = await axios.get(`${URL}/${_id}`);
       const productApi = await res.data;
       console.log("===================");
       console.log(productApi);
@@ -76,7 +76,7 @@ const ProductEdit = ({ URL, getApi }) => {
     }).then(async (result) => {
       if (result.isConfirmed) {
         try {
-          const res = await fetch(`${URL}/${id}`, {
+          const res = await fetch(`${URL}/${_id}`, {
             method: "PUT",
             headers: {
               "content-type": "application/json",

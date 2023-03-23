@@ -1,4 +1,5 @@
 @import url(https://fonts.googleapis.com/css2?family=Farsan&display=swap);
+@import url(https://fonts.googleapis.com/css2?family=Fasthand&display=swap);
 
 
 /* Button yellow */
@@ -147,3 +148,14 @@
 .carrousel-img{
   height: 50rem !important;
 }
+.logo{
+
+  
+ 
+    font-family: 'Fasthand', serif;
+  
+}
+.logo-Img{
+  max-width: 7rem;
+}
+

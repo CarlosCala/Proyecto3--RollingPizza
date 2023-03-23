@@ -25,16 +25,9 @@ const ProductCreate = ({ URL, getApi }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // console.log("===================");
-    // console.log(inputs);
-    // console.log("===================");
 
     if (
-    //   // diferentes validaciones para cada input
-    //   //   !validateProductName(productName) ||
-    //   //  !validatePrice(price) ||
-    //   //  !validateUrl(urlImg) ||
-    //   //  !validateCategory(category)
+
 
       !validateProductName(inputs.productName) ||
       !validatePrice(inputs.price) ||

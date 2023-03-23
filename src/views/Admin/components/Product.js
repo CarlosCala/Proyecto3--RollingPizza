@@ -4,7 +4,7 @@ import Swal from "sweetalert2";
 import axios from "../../../config/axiosInit";
 
 const Product = ({ product, URL, getApi }) => {
-  const handleDelete = (id) => {
+  const handleDelete = (_id) => {
     Swal.fire({
       title: "Are you sure?",
       text: "You won't be able to revert this!",
@@ -16,7 +16,7 @@ const Product = ({ product, URL, getApi }) => {
     }).then(async (result) => {
       if (result.isConfirmed) {
         try {
-          const res = await axios.delete(`${URL}/${id}`);
+          const res = await axios.delete(`${URL}/${_id}`);
 
           if (res.status === 200) {
             Swal.fire("Deleted!", "Your file has been deleted.", "success");
@@ -34,7 +34,7 @@ const Product = ({ product, URL, getApi }) => {
 
   return (
     <tr>
-      <td>{product.id}</td>
+      <td>{product._id}</td>
       <td>{product.productName}</td>
       <td>${product.price}</td>
       <td>
@@ -44,14 +44,14 @@ const Product = ({ product, URL, getApi }) => {
       <td className="w-25">
         <div className="d-flex justify-content-center">
           <Link
-            to={`/product/edit/${product.id}`}
+            to={`/product/edit/${product._id}`}
             className="btn-orange mx-1 text-decoration-none text-center"
           >
             Update
           </Link>
           <button
             className="btn-red mx-1"
-            onClick={() => handleDelete(product.id)}
+            onClick={() => handleDelete(product._id)}
           >
             Delete
           </button>
