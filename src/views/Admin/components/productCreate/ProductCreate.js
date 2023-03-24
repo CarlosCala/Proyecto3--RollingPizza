@@ -56,12 +56,8 @@ const ProductCreate = ({ URL, getApi }) => {
       if (result.isConfirmed) {
         try {
           //  peticion con axios
-          const res = await axios.post(URL, newProduct, {
-            headers: {
-              "Content-Type": "application/json"
-            },
-          });
-          console.log(res);
+          const res = await axios.post(URL, newProduct)
+
 
           if (res.status === 201) {
             Swal.fire("created", "Your product has been created successfully");

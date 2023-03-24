@@ -20,9 +20,11 @@ function App() {
   const [products, setProducts] = useState([]);
   const [loggedUser, setLoggedUser] = useState({});
   const [users, setUsers] = useState([]);
+  const [orders, setOrders] = useState([]);
 
   const URL = process.env.REACT_APP_API_PIZZERIA;
   const UrlUser = process.env.REACT_APP_API_USARIOS;
+  const UrlOrder = process.env.REACT_APP_API_ORDER;
 
   useEffect(() => {
     getApi();
@@ -51,6 +53,16 @@ function App() {
       console.log(error);
     }
   };
+  const getApiOrder = async () => {
+    try {
+      const res = await axios.get(UrlOrder);
+      const ordersApi = res.data;
+      setOrders(ordersApi);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <>
       <BrowserRouter>
@@ -78,7 +90,14 @@ function App() {
             exact
             path="/product/buy/:_id"
             element={
-              <ProductDetail URL={URL} products={products} getApi={getApi} />
+              <ProductDetail
+                URL={URL}
+                products={products}
+                getApi={getApi}
+                UrlOrder={UrlOrder}
+                orders={orders}
+                getApiOrder={getApiOrder}
+              />
             }
           />
 
@@ -110,7 +129,7 @@ function App() {
             element={<UserEdit UrlUser={UrlUser} getApiUser={getApiUser} />}
           />
 
-        <Route exact path="*" element={<Error404 />} />
+          <Route exact path="*" element={<Error404 />} />
         </Routes>
         <Footer />
       </BrowserRouter>
