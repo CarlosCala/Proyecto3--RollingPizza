@@ -25,9 +25,7 @@ const ProductCreate = ({ URL, getApi }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
     if (
-
 
       !validateProductName(inputs.productName) ||
       !validatePrice(inputs.price) ||
@@ -39,12 +37,6 @@ const ProductCreate = ({ URL, getApi }) => {
     }
     //enviar los datos
     const newProduct = {
-      // cuando key y value tienen el mismo nombre se coloca solo una vez
-      // productName,
-      // price,
-      // urlImg,
-      // category
-
       // para un solo estado con varios inputs
       productName: inputs.productName,
       price: inputs.price,
@@ -67,8 +59,6 @@ const ProductCreate = ({ URL, getApi }) => {
           const res = await axios.post(URL, newProduct, {
             headers: {
               "Content-Type": "application/json"
-              // "x-access-token": JSON.parse(localStorage.getItem("user-token"))
-              //   .token,
             },
           });
           console.log(res);
@@ -105,7 +95,7 @@ const ProductCreate = ({ URL, getApi }) => {
             <Form.Label>Product name*</Form.Label>
             <Form.Control
               type="text"
-              placeholder="Ej: Pizza Fugazzeta Especial"
+              placeholder="Ej: Café"
               name="productName"
               value={inputs.productName || ""}
               onChange={(e) => handleChange(e)}

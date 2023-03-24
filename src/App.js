@@ -13,7 +13,8 @@ import Navigation from "./views/layouts/Navigation";
 import Footer from "./views/layouts/Footer";
 import Login from "./views/login/Login";
 import Register from "./views/register/Register";
-
+import ProductDetail from "./views/home/productDetail/ProductDetail";
+import Error404 from "./views/layouts/Error404";
 
 function App() {
   const [products, setProducts] = useState([]);
@@ -43,18 +44,13 @@ function App() {
 
   const getApiUser = async () => {
     try {
-      const res = await axios.get(UrlUser+ "/table");
+      const res = await axios.get(UrlUser + "/table");
       const userApi = res.data;
-      console.log("************");
-      console.log(userApi);
-      console.log("************");
       setUsers(userApi);
     } catch (error) {
       console.log(error);
     }
   };
-  console.log(users, "soy los users");
-
   return (
     <>
       <BrowserRouter>
@@ -80,10 +76,22 @@ function App() {
           />
           <Route
             exact
+            path="/product/buy/:_id"
+            element={
+              <ProductDetail URL={URL} products={products} getApi={getApi} />
+            }
+          />
+
+          <Route
+            exact
             path="/auth/login/"
             element={<Login setLoggedUser={setLoggedUser} />}
           />
-          <Route exact path="/auth/register/" element={<Register />} />
+          <Route
+            exact
+            path="/auth/register/"
+            element={<Register setLoggedUser={setLoggedUser} />}
+          />
 
           <Route
             exact
@@ -101,6 +109,8 @@ function App() {
             path="/user/edit/:_id"
             element={<UserEdit UrlUser={UrlUser} getApiUser={getApiUser} />}
           />
+
+        <Route exact path="*" element={<Error404 />} />
         </Routes>
         <Footer />
       </BrowserRouter>

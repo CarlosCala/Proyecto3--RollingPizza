@@ -8,6 +8,9 @@ const Register = ({ setLoggedUser }) => {
   const [inputs, setInputs] = useState({});
   const [error, setError] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
+
+
+
   const URL = process.env.REACT_APP_API_USARIOS
 
   const handleChange = (event) => {
@@ -18,7 +21,7 @@ const Register = ({ setLoggedUser }) => {
   //useNavigate
   const navigate = useNavigate();
 
-  //Funcion para crear el producto
+  //Funcion para crear el usuario
   const handleSubmit = async (e) => {
     e.preventDefault();
     console.log(inputs);
@@ -38,9 +41,11 @@ const Register = ({ setLoggedUser }) => {
         // const data = await res.json(); // si es con fetch
         const data = res.data 
         console.log(data);
-        localStorage.setItem(JSON.stringify(data));
+        localStorage.setItem("user-token", JSON.stringify(data));
         setLoggedUser(data);
-        navigate("/product/table");
+
+        console.log("userCreado")
+        navigate("/");
       }
     } catch (error) {
       console.log(error);
@@ -92,11 +97,11 @@ const Register = ({ setLoggedUser }) => {
             <button className="btn-yellow">Send</button>
           </div>
         </Form>
-        {error ? (
+        {/* {error ? (
         <Alert variant="danger" onClick={() => setError(false)} dismissible>
           {errorMessage}
         </Alert>
-      ) : null}
+      ) : null} */}
       </Container>
     </div>
   );

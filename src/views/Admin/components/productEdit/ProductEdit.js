@@ -33,10 +33,6 @@ const ProductEdit = ({ URL, getApi }) => {
       //peticion con axios
       const res = await axios.get(`${URL}/${_id}`);
       const productApi = await res.data;
-      console.log("===================");
-      console.log(productApi);
-      console.log("===================");
-
       setProduct(productApi);
     } catch (error) {
       console.log(error);
@@ -64,7 +60,6 @@ const ProductEdit = ({ URL, getApi }) => {
       urlImg: productImgRef.current.value,
       category: product.category,
     };
-
     Swal.fire({
       title: "Are you sure?",
       text: "You won't be able to revert this!",
@@ -76,15 +71,15 @@ const ProductEdit = ({ URL, getApi }) => {
     }).then(async (result) => {
       if (result.isConfirmed) {
         try {
-          const res = await fetch(`${URL}/${_id}`, {
-            method: "PUT",
-            headers: {
-              "content-type": "application/json",
-            },
-            body: JSON.stringify(productUpdate),
-          });
+          // const res = await fetch(`${URL}/${_id}`, {
+          //   method: "PUT",
+          //   headers: {
+          //     "content-type": "application/json",
+          //   },
+          //   body: JSON.stringify(productUpdate),
+          // });
 
-          // const res = await axios.put(`${URL}/${id}` , productUpdate)
+          const res = await axios.put(`${URL}/${_id}` , productUpdate)
           console.log(res.data);
 
           if (res.status === 200) {

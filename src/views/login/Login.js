@@ -24,7 +24,6 @@ const Login = ({ setLoggedUser }) => {
     //===========  en helpers realizar las validaciones para email
     //Envio los datos
     try {
-
       const res = await axios.post(`${URL}/login`, {
         email: inputs.email,
         password: inputs.password,
@@ -33,8 +32,11 @@ const Login = ({ setLoggedUser }) => {
         Swal.fire("Logged!", "Your user has been logged.", "success");
         //const data = await res.json(); //si es con fetch
         const data = res.data;
+
                //guardar en localStorage el token
-        localStorage.setItem(JSON.stringify(data));
+        // localStorage.setItem("user-token", JSON.stringify(data));
+        localStorage.setItem("user-token", JSON.stringify(data));
+
         setLoggedUser(data);
         navigate("/");
       }

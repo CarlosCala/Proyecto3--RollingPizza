@@ -3,10 +3,11 @@ import { Card } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
 const CardProduct = ({ product }) => {
+  
   return (
     <div>
-      <Card className="my-4">
-        <Card.Img className="img-fluid" variant="top" src={product.urlImg} />
+      <Card className="my-4 cardProduct">
+        <Card.Img className="img-fluid cardImg" variant="top" src={product.urlImg} />
         <Card.Body>
           <div className="d-flex align-items-center justify-content-between mb-2">
             <Card.Title className="m-0 text-truncate">

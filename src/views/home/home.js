@@ -11,7 +11,7 @@ const Home = ({ products }) => {
         <h1>Products</h1>
         <hr />
         { products?.length !== 0 ?
-        <Row>
+        <Row className="cardsProducts">
           {products?.map((product) => (
             <Col xl={3} lg={4} md={6}>
               <CardProduct product={product} />

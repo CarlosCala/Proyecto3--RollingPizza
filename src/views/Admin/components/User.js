@@ -5,8 +5,6 @@ import { Link, useParams } from "react-router-dom";
 // import axios from "../../../config/axiosInit";
 
 const User = ({ user, UrlUser, getApiUser,users }) => {
-
-  console.log(users,'sy los userssss')
   return (
     <tr>
       <td>{user._id}</td>

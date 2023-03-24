@@ -93,7 +93,8 @@ const UserEdit = ({ UrlUser, getApiUser }) => {
           if (res.status === 200) {
             Swal.fire("Update", "your file has been updated", "succes");
           }
-          getApiUser();
+       
+           getApiUser();
           navigate("/user/table");
         } catch (error) {
           Swal.fire({
