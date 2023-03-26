@@ -4,12 +4,6 @@ import { Container, Form } from "react-bootstrap";
 import { useNavigate, useParams } from "react-router-dom";
 import Swal from "sweetalert2";
 
-// import {
-//   validateCategory,
-//   validatePrice,
-//   validateProductName,
-//   validateUrl,
-// } from "../../helpers/validateFields";
 import axios from "../../../../config/axiosInit";
 
 const UserEdit = ({ UrlUser, getApiUser }) => {
@@ -34,10 +28,6 @@ const UserEdit = ({ UrlUser, getApiUser }) => {
       //peticion con axios
       const res = await axios.get(`${UrlUser}/${_id}`);
       const userApi = await res.data;
-      console.log("===================");
-      console.log(userApi);
-      console.log("===================");
-
       setUser(userApi);
     } catch (error) {
       console.log(error);
@@ -46,18 +36,7 @@ const UserEdit = ({ UrlUser, getApiUser }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    //  console.log(productNameRef.current);
-    //validaciones
-    // if(
-    // !validateProductName(productNameRef.current.value) ||
-    // !validatePrice(productPriceRef.current.value) ||
-    // !validateUrl(productImgRef.current.value) ||
-    // !validateCategory(product.category)
-    // )
-    //  {
-    //    Swal.fire("oops! ", "Some data is invalid","error")
-    //    return;
-    //  }// guardar el objeto
+
     const userUpdate = {
       name: userNameRef.current.value,
       email: userEmailRef.current.value,
@@ -76,13 +55,7 @@ const UserEdit = ({ UrlUser, getApiUser }) => {
     }).then(async (result) => {
       if (result.isConfirmed) {
         try {
-          // const res = await fetch(`${UrlUser}/${_id}`, {
-          //   method: "PUT",
-          //   headers: {
-          //     "content-type": "application/json",
-          //   },
-          //   body: JSON.stringify(userUpdate),
-          // });
+
 
           const res = await axios.put(`${UrlUser}/${_id}` , userUpdate,{
             headers: {
@@ -135,19 +108,11 @@ const UserEdit = ({ UrlUser, getApiUser }) => {
               disabled
             />
           </Form.Group>
-          {/* <Form.Group className="mb-3" controlId="formBasicPassword">
-            <Form.Label>password*</Form.Label>
-            <Form.Control
-              type="text"
-              defaultValue={user.password}
-              ref={userPassword}
-              disabled
-            />
-          </Form.Group> */}
           <Form.Group className="mb-3" controlId="formBasicPassword">
             <Form.Label>status*</Form.Label>
             <Form.Select
               aria-label="Default select example"
+              value={user.status}
               onChange={({ target }) =>
                 setUser({ ...user, status: target.value })
               }
@@ -161,6 +126,7 @@ const UserEdit = ({ UrlUser, getApiUser }) => {
             <Form.Label>Admin*</Form.Label>
             <Form.Select
               aria-label="Default select example"
+              value={user.admin}
               onChange={({ target }) =>
                 setUser({ ...user, admin: target.value })
               }

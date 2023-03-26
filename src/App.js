@@ -15,6 +15,8 @@ import Login from "./views/login/Login";
 import Register from "./views/register/Register";
 import ProductDetail from "./views/home/productDetail/ProductDetail";
 import Error404 from "./views/layouts/Error404";
+import OrderTable from "./views/Admin/OrderTable";
+import OrderStatus from "./views/Admin/components/orderEdit/OrderStatus";
 
 function App() {
   const [products, setProducts] = useState([]);
@@ -55,7 +57,7 @@ function App() {
   };
   const getApiOrder = async () => {
     try {
-      const res = await axios.get(UrlOrder);
+      const res = await axios.get(UrlOrder + "/table");
       const ordersApi = res.data;
       setOrders(ordersApi);
     } catch (error) {
@@ -100,7 +102,28 @@ function App() {
               />
             }
           />
+          <Route
+            exact
+            path="/order/table"
+            element={
+              <OrderTable
+                UrlOrder={UrlOrder}
+                orders={orders}
+                getApiOrder={getApiOrder}
+              />
+            }
+          />
 
+        <Route
+            exact
+            path="/order/status/:_id"
+            element={
+              <OrderStatus
+                UrlOrder={UrlOrder}
+                getApiOrder={getApiOrder}
+              />
+            }
+          />
           <Route
             exact
             path="/auth/login/"

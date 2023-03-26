@@ -5,7 +5,7 @@ import CarouselHome from "./carouselHome/CarouselHome";
 
 const Home = ({ products }) => {
   return (
-    <div>
+    <div className="mt-5">
       <CarouselHome />
       <Container className="py-5">
         <h1>Products</h1>

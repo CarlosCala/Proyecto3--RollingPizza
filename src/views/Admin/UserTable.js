@@ -17,7 +17,7 @@ const UserTable = ({ users, UrlUser, getApiUser }) => {
             Product Control 
           </Link>
           <Link
-            to=""
+            to="/order/table"
             className="btn btn-outline-danger"
           >
             Order Control

@@ -24,7 +24,7 @@ const AdminTable = ({ products, URL, getApi }) => {
             Product Control
           </Link>
           <Link
-            to=""
+            to="/order/table"
             className="btn-orange  text-decoration-none text-center"
           >
             Order Control
