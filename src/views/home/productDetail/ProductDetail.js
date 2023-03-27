@@ -50,13 +50,13 @@ const ProductDetail = ({ URL, getApi, UrlOrder, getApiOrder}) => {
       };
 
     Swal.fire({
-      title: "Are you sure?",
+      title: "Are you sure you want to order this?",
       text: "You won't be able to revert this!",
-      icon: "warning",
+      icon: "question",
       showCancelButton: true,
       confirmButtonColor: "#3085d6",
       cancelButtonColor: "#d33",
-      confirmButtonText: "Save",
+      confirmButtonText: "Order",
     }).then(async (result) => {
       if (result.isConfirmed) {
         try {
@@ -84,7 +84,8 @@ const ProductDetail = ({ URL, getApi, UrlOrder, getApiOrder}) => {
     });
   };
   return (
-    <Container className="bg-productDetail ">
+    <Container className="bg-productDetail  ">
+      <div className="productDetail">
               <Row className="j">
         <Col sm={8} >
         <Card
@@ -148,6 +149,7 @@ const ProductDetail = ({ URL, getApi, UrlOrder, getApiOrder}) => {
         </Form>
         </Col>
       </Row>
+      </div>
 
           
 
