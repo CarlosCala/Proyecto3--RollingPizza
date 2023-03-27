@@ -1,7 +1,11 @@
-### Para ejecutar nuestra base de datos (ejecutarlo en otra terminal/consola aparte a la de react)
+# Grupo 2 - Blog Films
 
-json-server --watch db.json --port 3001
-json-server --watch user.json --port 3001
+# Integrantes
+
+1- Carlos Calamante <b>(SCRUM MASTER)</b></br>
+
+Vercel Deploy
+
 
 # Getting Started with Create React App
 
