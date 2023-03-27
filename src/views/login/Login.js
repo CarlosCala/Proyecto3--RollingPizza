@@ -20,7 +20,7 @@ const Login = ({ setLoggedUser }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-       //Valido los campos
+    //Valido los campos
     //===========  en helpers realizar las validaciones para email
     //Envio los datos
     try {
@@ -32,9 +32,7 @@ const Login = ({ setLoggedUser }) => {
         Swal.fire("Logged!", "Your user has been logged.", "success");
         //const data = await res.json(); //si es con fetch
         const data = res.data;
-
-               //guardar en localStorage el token
-        // localStorage.setItem("user-token", JSON.stringify(data));
+        //guardar en localStorage el token
         localStorage.setItem("user-token", JSON.stringify(data));
 
         setLoggedUser(data);
@@ -84,11 +82,11 @@ const Login = ({ setLoggedUser }) => {
             <button className="btn-yellow">Send</button>
           </div>
         </Form>
-        {/* {error ? (
+        {error ? (
           <Alert variant="danger" onClick={() => setError(false)} dismissible>
             {errorMessage}
           </Alert>
-        ) : null} */}
+        ) : null}
       </Container>
     </div>
   );

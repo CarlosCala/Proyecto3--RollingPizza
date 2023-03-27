@@ -155,11 +155,24 @@
   background: #ecd078;
 }
 /* ************* carrousel ********************/
+
 .carrousel-img{
   height: 50rem !important;
 }
 
-@media (max-width: 500px) {
+  @media (max-width: 768px) {
+    .carrousel-img{
+      height: 35rem !important;
+    }
+
+    .cardsProducts{
+      margin-left: 5rem !important;
+
+    }
+
+  }
+
+@media (max-width: 576px) {
 
   .carrousel-img{
     height: 25rem !important;
@@ -168,8 +181,36 @@
     margin-left: 2rem !important;
     /* margin-right: auto !important; */
   }
+  .namePage{
+    display: none;
+  }
+  .buttonsTables {
+    flex-direction: column;
+    
+  }
+  .btn-orange{
+    margin: 5px;
+  }
   }
 
+
+
+  @media (max-width : 390px) {
+
+    .carrousel-img{
+      height: 22rem !important;
+    }
+    .cardsProducts{
+      margin-left: 1rem !important;
+    }
+    .namePage{
+      display: none;
+    }
+    }
+
+
+
+    
 .logo{
     font-family: 'Fasthand', serif;
   }
@@ -211,3 +252,45 @@
   background: rgb(208,0,0);
   background: linear-gradient(90deg, rgba(208,0,0,1) 0%, rgba(232,93,4,1) 72%, rgba(250,163,7,1) 100%);
   }
+
+  /* button logout */
+
+  .css-button-arrow--red {
+    margin-top: 1.5rem;
+    min-width: 130px;
+    max-width: 2rem;
+    height: 40px;
+    color: #fff;
+    padding: 5px 10px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    display: inline-block;
+    outline: none;
+    overflow: hidden;
+    border-radius: 5px;
+    border: none;
+    background-color: #9D0208 !important;
+    border: none !important;
+  }
+  .css-button-arrow--red:hover {
+    border-radius: 5px;
+    padding-right: 24px;
+    padding-left:8px;
+  }
+  .css-button-arrow--red:hover:after {
+    opacity: 1;
+    right: 10px;
+  }
+  .css-button-arrow--red:after {
+    content: "\00BB";
+    position: absolute;
+    opacity: 0;
+    font-size: 20px;
+    line-height: 40px;
+    top: 0;
+    right: -20px;
+    transition: 0.4s;
+  }
+

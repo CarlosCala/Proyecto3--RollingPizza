@@ -5,7 +5,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import Swal from "sweetalert2";
 import axios from "../../../config/axiosInit";
 
-const ProductDetail = ({ URL, getApi, UrlOrder, getApiOrder }) => {
+const ProductDetail = ({ URL, getApi, UrlOrder, getApiOrder}) => {
   //steate
   const [product, setProduct] = useState({});
   
@@ -18,8 +18,6 @@ const ProductDetail = ({ URL, getApi, UrlOrder, getApiOrder }) => {
 
   const navigate = useNavigate();
 
-
-  
 
 
   //llamado a la api para obtener el producto con su id
@@ -72,7 +70,7 @@ const ProductDetail = ({ URL, getApi, UrlOrder, getApiOrder }) => {
           getApiOrder();
           e.target.reset(); // el e.target en este caso por el submit es el form
           //recarca la tabla
-        //   getApiOrder();
+          // getApiOrder();
           //navega hasta la tabla de productos
           navigate("/");
         } catch (error) {
@@ -138,6 +136,7 @@ const ProductDetail = ({ URL, getApi, UrlOrder, getApiOrder }) => {
               type="number"
               placeholder="Ej: 3"
               name="quantity"
+              min = "1"
               onChange={({ target }) =>
               setProduct({ ...product, quantity: target.value })
             }

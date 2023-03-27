@@ -8,8 +8,9 @@ const CarouselHome = () => {
       <Carousel.Item >
         <img
           className="d-block w-100 carrousel-img"
-          src="https://images.pexels.com/photos/1146760/pexels-photo-1146760.jpeg?auto=compress&cs=tinysrgb&w=600"
+          src="https://images.pexels.com/photos/3682837/pexels-photo-3682837.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
           alt="pizzza"
+          
         />
         <Carousel.Caption>
           <h3>Proba las mejores pizzas</h3>
@@ -19,7 +20,7 @@ const CarouselHome = () => {
       <Carousel.Item>
         <img
           className="d-block w-100 carrousel-img" 
-          src="https://images.pexels.com/photos/2271196/pexels-photo-2271196.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+          src="https://images4.alphacoders.com/144/144528.jpg"
           alt="pizza y cubiertos"
         />
 
@@ -31,7 +32,7 @@ const CarouselHome = () => {
       <Carousel.Item>
         <img
           className="d-block w-100 carrousel-img"
-          src="https://images.pexels.com/photos/3682837/pexels-photo-3682837.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+          src="https://images3.alphacoders.com/144/144529.jpg"
           alt="Third slide"
         />
 

@@ -17,7 +17,7 @@ const Navigation = ({ loggedUser, setLoggedUser }) => {
         <Container>
           <Navbar.Brand className="logo" href="/">
             <div className="d-flex ">
-              <h1 className="display-4 "> La Bella Pizza</h1>
+              <h1 className="display-4 namePage "> La Bella Pizza</h1>
               <img
                 className="logo-Img"
                 src="https://seeklogo.com/images/P/pizza-logo-42816D88BE-seeklogo.com.png"
@@ -33,18 +33,17 @@ const Navigation = ({ loggedUser, setLoggedUser }) => {
               <Link className="nav-link" to="/">
                 Home
               </Link>
-              {/* <Link className="nav-link" to="/product/table">
-                admin
-              </Link> */}
+
               {loggedUser.token ? (
                 <>
-                  <Button variant="dark" onClick={logout}>
-                    Logout
-                  </Button>
-                  <Link className="nav-link logoutBtn" to="/product/table">
+
+                  <Link className="nav-link " to="/product/table">
                     {" "}
                     Admin page
                   </Link>
+                  <Button className="css-button-arrow--red" onClick={logout}>
+                    Logout
+                  </Button>
                 </>
               ) : (
                 <Link className="nav-link" to="/auth/login/">

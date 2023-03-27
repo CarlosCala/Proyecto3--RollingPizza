@@ -70,7 +70,7 @@ function App() {
       <BrowserRouter>
         <Navigation loggedUser={loggedUser} setLoggedUser={setLoggedUser} />
         <Routes>
-          <Route exact path="/" element={<Home products={products} />} />
+          <Route exact path="/" element={<Home products={products} loggedUser={loggedUser} />} />
           <Route
             exact
             path="/product/table"
@@ -99,6 +99,7 @@ function App() {
                 UrlOrder={UrlOrder}
                 orders={orders}
                 getApiOrder={getApiOrder}
+
               />
             }
           />
@@ -134,7 +135,6 @@ function App() {
             path="/auth/register/"
             element={<Register setLoggedUser={setLoggedUser} />}
           />
-
           <Route
             exact
             path="/user/table"

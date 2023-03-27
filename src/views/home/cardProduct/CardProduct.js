@@ -1,9 +1,15 @@
 import React from "react";
 import { Card, Col, Row } from "react-bootstrap";
-import { Link } from "react-router-dom";
+// import { Next } from "react-bootstrap/esm/PageItem";
+import { Link, useNavigate } from "react-router-dom";
 
-const CardProduct = ({ product }) => {
-  
+const CardProduct = ({ product ,loggedUser}) => {
+
+  const navigate= useNavigate()
+
+
+
+
   return (
     <div>
       <Card className="my-4 cardProduct">
@@ -24,6 +30,7 @@ const CardProduct = ({ product }) => {
             <Link
               to={`/product/buy/${product._id}`}
               className="btn-gray text-decoration-none text-center"
+              
             >
               Buy
             </Link>

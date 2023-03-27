@@ -3,7 +3,14 @@ import { Col, Container, Row } from "react-bootstrap";
 import CardProduct from "./cardProduct/CardProduct";
 import CarouselHome from "./carouselHome/CarouselHome";
 
-const Home = ({ products }) => {
+const Home = ({ products ,loggedUser}) => {
+
+  if(!loggedUser){
+    
+
+  }
+
+
   return (
     <div className="mt-5">
       <CarouselHome />
@@ -14,7 +21,7 @@ const Home = ({ products }) => {
         <Row className="cardsProducts">
           {products?.map((product) => (
             <Col xl={3} lg={4} md={6}>
-              <CardProduct product={product} />
+              <CardProduct product={product} loggedUser={loggedUser} />
             </Col>
           ))}
         </Row>

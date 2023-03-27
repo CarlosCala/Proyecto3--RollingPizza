@@ -16,7 +16,7 @@ const AdminTable = ({ products, URL, getApi }) => {
             Home
           </Link>
         </div>
-        <div className="d-flex align-items-center justify-content-between mt-5 text-white">
+        <div className="d-flex align-items-center justify-content-between mt-5 text-white d-flex buttonsTables">
           <Link
             to="/product/table"
             className="btn-orange  text-decoration-none text-center"

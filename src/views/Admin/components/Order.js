@@ -21,7 +21,7 @@ const Order = ({ order, UrlOrder, getApiOrder }) => {
       <td>${order.quantity}</td>
       <td className="d-flex justify-content-between">
         {order.delivery}
-        <Link to={`/order/status/${order._id}`} >
+        <Link to={`/order/status/${order._id}`} className="btn btn-warning">
         Realized
         </Link>
       </td>
