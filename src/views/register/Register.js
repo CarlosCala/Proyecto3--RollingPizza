@@ -67,9 +67,10 @@ const Register = ({ setLoggedUser }) => {
           <Form.Group className="mb-3" controlId="formBasicEmail">
             <Form.Label>Email*</Form.Label>
             <Form.Control
-              type="text"
+              type="email"
               placeholder="johndoe@gmail.com"
               name="email"
+              maxLength="45"
               value={inputs.email || ""}
               onChange={(e) => handleChange(e)}
             />
