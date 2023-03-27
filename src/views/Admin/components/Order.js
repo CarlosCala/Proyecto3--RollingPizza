@@ -6,11 +6,9 @@ import Swal from "sweetalert2";
 import axios from "../../../config/axiosInit";
 
 const Order = ({ order, UrlOrder, getApiOrder }) => {
-
-    const [show, setShow] = useState(false);
-
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
+  const [show, setShow] = useState(false);
+  // const handleClose = () => setShow(false);
+  // const handleShow = () => setShow(true);
 
 
   return (
@@ -22,12 +20,9 @@ const Order = ({ order, UrlOrder, getApiOrder }) => {
       <td className="d-flex justify-content-between">
         {order.delivery}
         <Link to={`/order/status/${order._id}`} className="btn btn-warning">
-        Realized
+          Realized
         </Link>
       </td>
-      
-
-
     </tr>
   );
 };

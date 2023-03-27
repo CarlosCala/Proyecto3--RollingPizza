@@ -7,26 +7,34 @@ import User from "./components/User"
 
 const UserTable = ({ users, UrlUser, getApiUser }) => {
   return (
-    <div className="UserTable p-4">
-      <Container > 
-        <div className="d-flex align-items-center justify-content-between mt-5 ">
+    <>
+      <Container className="adminTable p-4" > 
+      <div >
         <Link
-            to="/product/table"
-            className="btn btn-outline-danger"
+            to="/"
+            className="btn btn-outline-danger text-center"
           >
-            Product Control 
+            Home
+          </Link>
+        </div>
+        <div className="d-flex align-items-center justify-content-between mt-5 text-white  buttonsTables">
+          <Link
+            to="/product/table"
+            className="btn-orange  text-decoration-none text-center"
+          >
+            Product Control
           </Link>
           <Link
             to="/order/table"
-            className="btn btn-outline-danger"
+            className="btn-orange  text-decoration-none text-center"
           >
             Order Control
           </Link>
           <Link
             to="/user/table"
-            className="btn btn-outline-danger"
+            className="btn-orange  text-decoration-none text-center"
           >
-            User Controll
+            User Control
           </Link>
         </div>
         <hr />
@@ -65,7 +73,7 @@ const UserTable = ({ users, UrlUser, getApiUser }) => {
         }
         <hr />
       </Container>
-      </div>
+      </>
   );
 };
 

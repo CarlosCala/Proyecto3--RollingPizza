@@ -18,7 +18,7 @@ export const validatePrice = (field) => {
     regExpPrice.test(field) &&
     field.trim() !== "" &&
     field.trim() > 0 &&
-    field.trim() < 2000
+    field.trim() < 4000
   ) {
     return true;
   } else {

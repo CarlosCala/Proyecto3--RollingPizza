@@ -3,16 +3,12 @@ import { Card, Col, Row } from "react-bootstrap";
 // import { Next } from "react-bootstrap/esm/PageItem";
 import { Link, useNavigate } from "react-router-dom";
 
-const CardProduct = ({ product ,loggedUser}) => {
-
-  const navigate= useNavigate()
-
-
+const CardProduct = ({ product}) => {
 
 
   return (
-    <div>
-      <Card className="my-4 cardProduct">
+    <div >
+      <Card className="my-4 cardProduct border border-ligth cardsProducts">
         <Card.Img className="img-fluid cardImg" variant="top" src={product.urlImg} />
         <Card.Body>
           <div className="d-flex align-items-center justify-content-between mb-2">
@@ -21,16 +17,11 @@ const CardProduct = ({ product ,loggedUser}) => {
             </Card.Title>
             <span className="badge bg-yellow">New</span>
           </div>
-          <Card.Text>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum id,
-            voluptate necessitatibus ex eius sunt!
-          </Card.Text>
           <div className="d-flex align-items-center justify-content-between">
             <p className="mb-0 ms-4 fs-4 ">${product.price}</p>
             <Link
               to={`/product/buy/${product._id}`}
               className="btn-gray text-decoration-none text-center"
-              
             >
               Buy
             </Link>

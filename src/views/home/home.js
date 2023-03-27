@@ -18,10 +18,10 @@ const Home = ({ products ,loggedUser}) => {
         <h1>Products</h1>
         <hr />
         { products?.length !== 0 ?
-        <Row className="cardsProducts">
+        <Row>
           {products?.map((product) => (
             <Col xl={3} lg={4} md={6}>
-              <CardProduct product={product} loggedUser={loggedUser} />
+              <CardProduct product={product} loggedUser={loggedUser} className="cardProduct" />
             </Col>
           ))}
         </Row>

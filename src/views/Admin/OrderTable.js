@@ -1,24 +1,24 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Col, Container, Row, Table } from "react-bootstrap";
 import Button from "react-bootstrap/Button";
 import { Link } from "react-router-dom";
 import Order from "./components/Order";
 
-
-
 const OrderTable = ({ orders, UrlOrder, getApiOrder }) => {
+  useEffect(()=>{
+    getApiOrder()
+  },[])
+
+  
   return (
     <>
       <Container className="adminTable p-4">
         <div>
-        <Link
-            to="/"
-            className="btn btn-outline-danger text-center"
-          >
+          <Link to="/" className="btn btn-outline-danger text-center">
             Home
           </Link>
         </div>
-        <div className="d-flex align-items-center justify-content-between mt-5 text-white">
+        <div className="d-flex align-items-center justify-content-between mt-5 text-white buttonsTables">
           <Link
             to="/product/table"
             className="btn-orange  text-decoration-none text-center"
@@ -26,7 +26,7 @@ const OrderTable = ({ orders, UrlOrder, getApiOrder }) => {
             Product Control
           </Link>
           <Link
-            to="/table"
+            to="/order/table"
             className="btn-orange  text-decoration-none text-center"
           >
             Order Control
@@ -42,7 +42,12 @@ const OrderTable = ({ orders, UrlOrder, getApiOrder }) => {
 
         {/* Table of products */}
         {orders?.length !== 0 ? (
-          <Table bordered hover responsive className="align-middle mt-3 text-white bg-black">
+          <Table
+            bordered
+            hover
+            responsive
+            className="align-middle mt-3 text-white bg-black"
+          >
             <thead>
               <tr>
                 <th>N.</th>
@@ -55,10 +60,10 @@ const OrderTable = ({ orders, UrlOrder, getApiOrder }) => {
             <tbody>
               {orders?.map((order) => (
                 <Order
-                key={order.id}
-                UrlOrder={UrlOrder}
-                order={order}
-                getApiOrder={getApiOrder}
+                  key={order.id}
+                  UrlOrder={UrlOrder}
+                  order={order}
+                  getApiOrder={getApiOrder}
                 />
               ))}
             </tbody>

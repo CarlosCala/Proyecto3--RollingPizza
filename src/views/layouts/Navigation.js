@@ -11,6 +11,8 @@ const Navigation = ({ loggedUser, setLoggedUser }) => {
     navigate("/");
   };
 
+  console.log(loggedUser);
+
   return (
     <div className="bgNavigation">
       <Navbar className="bg-red" expand="lg">
@@ -34,7 +36,7 @@ const Navigation = ({ loggedUser, setLoggedUser }) => {
                 Home
               </Link>
 
-              {loggedUser.token ? (
+              {loggedUser?.token ? (
                 <>
 
                   <Link className="nav-link " to="/product/table">

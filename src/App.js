@@ -17,8 +17,10 @@ import ProductDetail from "./views/home/productDetail/ProductDetail";
 import Error404 from "./views/layouts/Error404";
 import OrderTable from "./views/Admin/OrderTable";
 import OrderStatus from "./views/Admin/components/orderEdit/OrderStatus";
+import { set } from "lodash";
 
 function App() {
+
   const [products, setProducts] = useState([]);
   const [loggedUser, setLoggedUser] = useState({});
   const [users, setUsers] = useState([]);
@@ -36,6 +38,21 @@ function App() {
     getApiUser();
   }, []);
 
+  useEffect(() => {
+    isLoged();
+  },[]);
+
+
+
+  const isLoged = ()=>{
+    if(!JSON.parse(localStorage.getItem("user-token"))){
+        setLoggedUser({})
+    }
+    setLoggedUser(JSON.parse(localStorage.getItem("user-token")))
+
+  }
+
+  
   const getApi = async () => {
     try {
       const res = await axios.get(URL);
@@ -68,6 +85,7 @@ function App() {
   return (
     <>
       <BrowserRouter>
+      <div className="allBg">
         <Navigation loggedUser={loggedUser} setLoggedUser={setLoggedUser} />
         <Routes>
           <Route exact path="/" element={<Home products={products} loggedUser={loggedUser} />} />
@@ -155,6 +173,7 @@ function App() {
           <Route exact path="*" element={<Error404 />} />
         </Routes>
         <Footer />
+        </div>
       </BrowserRouter>
     </>
   );

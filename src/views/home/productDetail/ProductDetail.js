@@ -10,15 +10,15 @@ const ProductDetail = ({ URL, getApi, UrlOrder, getApiOrder}) => {
   const [product, setProduct] = useState({});
   
 
+  console.log(product.quantity);
   //useParams
+
   const { _id } = useParams();
   //variables de referencia - references
   const productNameRef = useRef("");
   const productPriceRef = useRef("");
 
   const navigate = useNavigate();
-
-
 
   //llamado a la api para obtener el producto con su id
 
@@ -84,8 +84,7 @@ const ProductDetail = ({ URL, getApi, UrlOrder, getApiOrder}) => {
     });
   };
   return (
-    <Container className="bg-productDetail  ">
-      <div className="productDetail">
+    <Container className="bg-productDetail">
               <Row className="j">
         <Col sm={8} >
         <Card
@@ -149,10 +148,8 @@ const ProductDetail = ({ URL, getApi, UrlOrder, getApiOrder}) => {
         </Form>
         </Col>
       </Row>
-      </div>
 
-          
-
+        
 
     </Container>
   );
