@@ -11,7 +11,6 @@ const Register = ({ setLoggedUser }) => {
   const [error, setError] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
 
-
   const URL = process.env.REACT_APP_API_USARIOS;
 
   const handleChange = (event) => {
@@ -21,9 +20,6 @@ const Register = ({ setLoggedUser }) => {
   };
   //useNavigate
   const navigate = useNavigate();
-
-
-
   //Funcion para crear el usuario
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -52,41 +48,10 @@ const Register = ({ setLoggedUser }) => {
     }
   };
 
-    //enviar email
-
-
- 
-
-
-  // var templateParams = {
-  //   from_name: "La Bella Pizza",
-  //   user_name: inputs.name,
-  //   destinatario: inputs.email,
-  //   message:
-  //     "¡Hola y bienvenido a nuestra pizzería en línea! Con tu registro, podrás realizar pedidos en línea de manera rápida y sencilla, guardar tus direcciones y métodos de pago preferidos, y recibir actualizaciones sobre nuestras últimas ofertas y promociones especiales.",
-  // };
-
-  //  const functionEmail =() => {
-    
-  //   emailjs.send("service_bu5pb33", "template_7qe4chh", templateParams).then(
-  //     function (response) {
-  //       console.log("SUCCESS!", response.status, response.text);
-  //     },
-  //     function (error) {
-  //       console.log("FAILED...", error);
-  //     }
-  //   );
-
-  //   console.log("hola soy handleEmail");
-  // }
-
-
-
-
   return (
     <div>
       <Container className="py-5">
-        {/* <h1>Register</h1> <button className="btn-yellow" onClick={functionEmail}>Suscript</button> */}
+         <h1>Register</h1> 
         <hr />
         <Form className="my-5" onSubmit={handleSubmit}>
           <Form.Group className="mb-3" controlId="formBasicUserName">

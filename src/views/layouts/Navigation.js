@@ -11,8 +11,6 @@ const Navigation = ({ loggedUser, setLoggedUser }) => {
     navigate("/");
   };
 
-  console.log(loggedUser);
-
   return (
     <div className="bgNavigation">
       <Navbar className="bg-red" expand="lg">
@@ -28,9 +26,7 @@ const Navigation = ({ loggedUser, setLoggedUser }) => {
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
-            <div>
-              
-            </div>
+            <div></div>
             <Nav className="ms-auto color-nav display-5">
               <Link className="nav-link" to="/">
                 Home
@@ -38,7 +34,6 @@ const Navigation = ({ loggedUser, setLoggedUser }) => {
 
               {loggedUser?.token ? (
                 <>
-
                   <Link className="nav-link " to="/product/table">
                     {" "}
                     Admin page

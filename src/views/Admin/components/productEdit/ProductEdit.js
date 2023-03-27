@@ -41,7 +41,6 @@ const ProductEdit = ({ URL, getApi }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    //  console.log(productNameRef.current);
     //validaciones
     if(
     !validateProductName(productNameRef.current.value) ||
@@ -71,16 +70,7 @@ const ProductEdit = ({ URL, getApi }) => {
     }).then(async (result) => {
       if (result.isConfirmed) {
         try {
-          // const res = await fetch(`${URL}/${_id}`, {
-          //   method: "PUT",
-          //   headers: {
-          //     "content-type": "application/json",
-          //   },
-          //   body: JSON.stringify(productUpdate),
-          // });
-
-          const res = await axios.put(`${URL}/${_id}` , productUpdate)
-          console.log(res.data);
+          const res = await axios.put(`${URL}/${_id}` , productUpdate);
 
           if (res.status === 200) {
             Swal.fire("Update", "your file has been updated", "succes");
