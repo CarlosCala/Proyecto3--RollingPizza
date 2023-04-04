@@ -48,16 +48,17 @@ const Login = ({ setLoggedUser }) => {
 
   return (
     <div>
-      <Container className="py-5">
-        <h1>Login</h1>
+      <Container className="py-5 loginContainer">
+        <h1 className="loginTitle">Login</h1>
         <hr />
         <Form className="my-5" onSubmit={handleSubmit}>
           <Form.Group className="mb-3" controlId="formBasicEmail">
             <Form.Label>Email*</Form.Label>
             <Form.Control
-              type="text"
+              type="email"
               placeholder="johndoe@gmail.com"
               name="email"
+              maxLength="45"
               value={inputs.email || ""}
               onChange={(e) => handleChange(e)}
             />
@@ -74,7 +75,7 @@ const Login = ({ setLoggedUser }) => {
           </Form.Group>
           <Link
             to="/auth/register"
-            className="btn-primary text-decoration-none"
+            className="btn btnNewUser text-decoration-none "
           >
             Register new user
           </Link>

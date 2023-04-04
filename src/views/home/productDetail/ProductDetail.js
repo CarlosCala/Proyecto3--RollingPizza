@@ -1,27 +1,21 @@
 import React from "react";
-import { Container, Row, Col, Card, Button,Form } from "react-bootstrap";
-import { useEffect, useState,useRef } from "react";
+import { Container, Row, Col, Card, Button, Form } from "react-bootstrap";
+import { useEffect, useState, useRef } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import Swal from "sweetalert2";
 import axios from "../../../config/axiosInit";
 
-const ProductDetail = ({ URL, getApi, UrlOrder, getApiOrder}) => {
+const ProductDetail = ({ URL, getApi, UrlOrder, getApiOrder }) => {
   //steate
   const [product, setProduct] = useState({});
-  
-
-  console.log(product.quantity);
   //useParams
-
   const { _id } = useParams();
   //variables de referencia - references
   const productNameRef = useRef("");
   const productPriceRef = useRef("");
 
   const navigate = useNavigate();
-
   //llamado a la api para obtener el producto con su id
-
   useEffect(() => {
     getOne();
   }, []);
@@ -36,18 +30,15 @@ const ProductDetail = ({ URL, getApi, UrlOrder, getApiOrder}) => {
       console.log(error);
     }
   };
-
-
   const handleSubmit = (e) => {
     e.preventDefault();
-
     //enviar los datos
     const newOrder = {
-        // para un solo estado con varios inputs
-        productName: productNameRef.current.value,
-        price: productPriceRef.current.value,
-        quantity: product.quantity  
-      };
+      // para un solo estado con varios inputs
+      productName: productNameRef.current.value,
+      price: productPriceRef.current.value,
+      quantity: product.quantity,
+    };
 
     Swal.fire({
       title: "Are you sure you want to order this?",
@@ -61,9 +52,7 @@ const ProductDetail = ({ URL, getApi, UrlOrder, getApiOrder}) => {
       if (result.isConfirmed) {
         try {
           //  peticion con axios
-          const res = await axios.post(UrlOrder, newOrder)
-
-
+          const res = await axios.post(UrlOrder, newOrder);
           if (res.status === 201) {
             Swal.fire("sent", "your order has been successfully shipped");
           }
@@ -85,9 +74,9 @@ const ProductDetail = ({ URL, getApi, UrlOrder, getApiOrder}) => {
   };
   return (
     <Container className="bg-productDetail">
-              <Row className="j">
-        <Col sm={8} >
-        <Card
+      <Row className="j">
+        <Col sm={8}>
+          <Card
             style={{ width: "25rem", height: "30rem" }}
             className="bgCardDetail bg-black text-white"
           >
@@ -102,55 +91,50 @@ const ProductDetail = ({ URL, getApi, UrlOrder, getApiOrder}) => {
                 Some quick example text to build on the card title and make up
                 the bulk of the card's content.
               </Card.Text>
-
             </Card.Body>
           </Card>
         </Col>
         <Col sm={4}>
-        {/* Form Product */}
-        <Form className="my-5" onSubmit={handleSubmit}>
-          <Form.Group className="mb-3" controlId="formBasicEmail">
-            <Form.Control
-              type="text"
-              placeholder="Ej: Café"
-              name="productName"
-              disabled
-              defaultValue={product.productName}
-              ref={productNameRef}
-            />
-          </Form.Group>
-          <Form.Group className="mb-3" controlId="formBasicPassword">
-            <Form.Label>$Price</Form.Label>
-            <Form.Control
-              type="number"
-              placeholder="Ej: 50"
-              name="price"
-              defaultValue={product.price}
-              ref={productPriceRef}
-              
-            />
-          </Form.Group>
-          <Form.Group className="mb-3" controlId="formBasicCheckbox">
-          <Form.Label>quantity*</Form.Label>
-            <Form.Control
-              type="number"
-              placeholder="Ej: 3"
-              name="quantity"
-              min = "1"
-              onChange={({ target }) =>
-              setProduct({ ...product, quantity: target.value })
-            }
-               />
-          </Form.Group>
-          <div className="text-end">
-            <button className="btn-yellow">Save</button>
-          </div>
-        </Form>
+          {/* Form Product */}
+          <Form className="my-5" onSubmit={handleSubmit}>
+            <Form.Group className="mb-3" controlId="formBasicEmail">
+              <Form.Control
+                type="text"
+                placeholder="Ej: Café"
+                name="productName"
+                disabled
+                defaultValue={product.productName}
+                ref={productNameRef}
+              />
+            </Form.Group>
+            <Form.Group className="mb-3" controlId="formBasicPassword">
+              <Form.Label>$Price</Form.Label>
+              <Form.Control
+                type="number"
+                placeholder="Ej: 50"
+                name="price"
+                defaultValue={product.price}
+                ref={productPriceRef}
+              />
+            </Form.Group>
+            <Form.Group className="mb-3" controlId="formBasicCheckbox">
+              <Form.Label>quantity*</Form.Label>
+              <Form.Control
+                type="number"
+                placeholder="Ej: 3"
+                name="quantity"
+                min="1"
+                onChange={({ target }) =>
+                  setProduct({ ...product, quantity: target.value })
+                }
+              />
+            </Form.Group>
+            <div className="text-end">
+              <button className="btn-yellow">Save</button>
+            </div>
+          </Form>
         </Col>
       </Row>
-
-        
-
     </Container>
   );
 };

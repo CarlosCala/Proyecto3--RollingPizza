@@ -10,8 +10,7 @@ const UserEdit = ({ UrlUser, getApiUser }) => {
   //steate
   const [user, setUser] = useState({});
   //useParams
-  const {_id} = useParams();
-  console.log('soy el id', _id,UrlUser );
+  const { _id } = useParams();
   //variables de referencia - references
   const userNameRef = useRef("");
   const userEmailRef = useRef("");
@@ -55,19 +54,16 @@ const UserEdit = ({ UrlUser, getApiUser }) => {
     }).then(async (result) => {
       if (result.isConfirmed) {
         try {
-
-
-          const res = await axios.put(`${UrlUser}/${_id}` , userUpdate,{
+          const res = await axios.put(`${UrlUser}/${_id}`, userUpdate, {
             headers: {
               "content-type": "application/json",
-            }})
-          console.log(userUpdate, 'que soy');
-
+            },
+          });
           if (res.status === 200) {
             Swal.fire("Update", "your file has been updated", "succes");
           }
-       
-           getApiUser();
+
+          getApiUser();
           navigate("/user/table");
         } catch (error) {
           Swal.fire({
@@ -82,9 +78,9 @@ const UserEdit = ({ UrlUser, getApiUser }) => {
 
   return (
     <div>
-      <Container className="py-5">
-        <div className="EditUser">
-        <h1 className="display-5">Edit User</h1>
+      <Container className="py-5 editUserContainer">
+        <div className="bgEditUser">
+          <h1 className="display-5">Edit User</h1>
         </div>
         <hr />
         {/* Form Product */}
@@ -95,7 +91,7 @@ const UserEdit = ({ UrlUser, getApiUser }) => {
               type="text"
               defaultValue={user.name}
               ref={userNameRef}
-              
+              disabled
             />
           </Form.Group>
           <Form.Group className="mb-3" controlId="formBasicPassword">

@@ -20,7 +20,6 @@ import OrderStatus from "./views/Admin/components/orderEdit/OrderStatus";
 import { set } from "lodash";
 
 function App() {
-
   const [products, setProducts] = useState([]);
   const [loggedUser, setLoggedUser] = useState({});
   const [users, setUsers] = useState([]);
@@ -40,19 +39,15 @@ function App() {
 
   useEffect(() => {
     isLoged();
-  },[]);
+  }, []);
 
-
-
-  const isLoged = ()=>{
-    if(!JSON.parse(localStorage.getItem("user-token"))){
-        setLoggedUser({})
+  const isLoged = () => {
+    if (!JSON.parse(localStorage.getItem("user-token"))) {
+      setLoggedUser({});
     }
-    setLoggedUser(JSON.parse(localStorage.getItem("user-token")))
+    setLoggedUser(JSON.parse(localStorage.getItem("user-token")));
+  };
 
-  }
-
-  
   const getApi = async () => {
     try {
       const res = await axios.get(URL);
@@ -85,94 +80,94 @@ function App() {
   return (
     <>
       <BrowserRouter>
-      <div className="allBg">
-        <Navigation loggedUser={loggedUser} setLoggedUser={setLoggedUser} />
-        <Routes>
-          <Route exact path="/" element={<Home products={products} loggedUser={loggedUser} />} />
-          <Route
-            exact
-            path="/product/table"
-            element={
-              <AdminTable products={products} getApi={getApi} URL={URL} />
-            }
-          />
-          <Route
-            exact
-            path="/product/create"
-            element={<ProductCreate URL={URL} getApi={getApi} />}
-          />
-          <Route
-            exact
-            path="/product/edit/:_id"
-            element={<ProductEdit URL={URL} getApi={getApi} />}
-          />
-          <Route
-            exact
-            path="/product/buy/:_id"
-            element={
-              <ProductDetail
-                URL={URL}
-                products={products}
-                getApi={getApi}
-                UrlOrder={UrlOrder}
-                orders={orders}
-                getApiOrder={getApiOrder}
+        <div className="allBg">
+          <Navigation loggedUser={loggedUser} setLoggedUser={setLoggedUser} />
+          <Routes>
+            <Route
+              exact
+              path="/"
+              element={<Home products={products} loggedUser={loggedUser} />}
+            />
+            <Route
+              exact
+              path="/product/table"
+              element={
+                <AdminTable products={products} getApi={getApi} URL={URL} />
+              }
+            />
+            <Route
+              exact
+              path="/product/create"
+              element={<ProductCreate URL={URL} getApi={getApi} />}
+            />
+            <Route
+              exact
+              path="/product/edit/:_id"
+              element={<ProductEdit URL={URL} getApi={getApi} />}
+            />
+            <Route
+              exact
+              path="/product/buy/:_id"
+              element={
+                <ProductDetail
+                  URL={URL}
+                  products={products}
+                  getApi={getApi}
+                  UrlOrder={UrlOrder}
+                  orders={orders}
+                  getApiOrder={getApiOrder}
+                />
+              }
+            />
+            <Route
+              exact
+              path="/order/table"
+              element={
+                <OrderTable
+                  UrlOrder={UrlOrder}
+                  orders={orders}
+                  getApiOrder={getApiOrder}
+                />
+              }
+            />
 
-              />
-            }
-          />
-          <Route
-            exact
-            path="/order/table"
-            element={
-              <OrderTable
-                UrlOrder={UrlOrder}
-                orders={orders}
-                getApiOrder={getApiOrder}
-              />
-            }
-          />
+            <Route
+              exact
+              path="/order/status/:_id"
+              element={
+                <OrderStatus UrlOrder={UrlOrder} getApiOrder={getApiOrder} />
+              }
+            />
+            <Route
+              exact
+              path="/auth/login/"
+              element={<Login setLoggedUser={setLoggedUser} />}
+            />
+            <Route
+              exact
+              path="/auth/register/"
+              element={<Register setLoggedUser={setLoggedUser} />}
+            />
+            <Route
+              exact
+              path="/user/table"
+              element={
+                <UserTable
+                  users={users}
+                  getApiUser={getApiUser}
+                  UrlUser={UrlUser}
+                />
+              }
+            />
+            <Route
+              exact
+              path="/user/edit/:_id"
+              element={<UserEdit UrlUser={UrlUser} getApiUser={getApiUser} />}
+            />
 
-        <Route
-            exact
-            path="/order/status/:_id"
-            element={
-              <OrderStatus
-                UrlOrder={UrlOrder}
-                getApiOrder={getApiOrder}
-              />
-            }
-          />
-          <Route
-            exact
-            path="/auth/login/"
-            element={<Login setLoggedUser={setLoggedUser} />}
-          />
-          <Route
-            exact
-            path="/auth/register/"
-            element={<Register setLoggedUser={setLoggedUser} />}
-          />
-          <Route
-            exact
-            path="/user/table"
-            element={
-              <UserTable
-                users={users}
-                getApiUser={getApiUser}
-                UrlUser={UrlUser}
-              />
-            }
-          />
-          <Route
-            exact
-            path="/user/edit/:_id"
-            element={<UserEdit UrlUser={UrlUser} getApiUser={getApiUser} />}
-          />
-
-          <Route exact path="*" element={<Error404 />} />
-        </Routes>
-        <Footer />
+            <Route exact path="*" element={<Error404 />} />
+          </Routes>
+          <Footer />
         </div>
       </BrowserRouter>
     </>

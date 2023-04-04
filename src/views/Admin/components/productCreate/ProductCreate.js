@@ -80,7 +80,7 @@ const ProductCreate = ({ URL, getApi }) => {
 
   return (
     <div>
-      <Container className="py-5">
+      <Container className="py-5 createProductContainer">
         <div className="bg-AddProduct">
         <h1>Add Product</h1>
         </div>
