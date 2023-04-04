@@ -12,7 +12,7 @@ const Home = ({ products ,loggedUser}) => {
 
 
   return (
-    <div className="mt-5">
+    <div className="">
       <CarouselHome />
       <Container className="py-5">
         <h1>Products</h1>

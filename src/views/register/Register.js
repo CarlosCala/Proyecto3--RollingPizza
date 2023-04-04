@@ -9,7 +9,7 @@ const Register = ({ setLoggedUser }) => {
   const [inputs, setInputs] = useState({});
   const [error, setError] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
-  // const [validated, setValidated] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const URL = process.env.REACT_APP_API_USARIOS;
 
@@ -49,6 +49,7 @@ const Register = ({ setLoggedUser }) => {
       password: inputs.password,
     };
     try {
+      setLoading(true);
       const res = await axios.post(`${URL}/register`, newUser);
       if (res.status === 201) {
         Swal.fire("Created!", "Your user has been created.", "success");
@@ -62,13 +63,15 @@ const Register = ({ setLoggedUser }) => {
       setError(true);
       error.response.data?.message &&
         setErrorMessage(error.response.data?.message);
+    } finally {
+      setLoading(false);
     }
   };
 
   return (
     <div>
-      <Container className="py-5">
-        <h1>Register</h1>
+      <Container className="py-5 registerContainer">
+        <h1 className="registeTitle">Register</h1>
         <hr />
         <Form className="my-5" onSubmit={handleSubmit} ref={form}>
           <Form.Group className="mb-3" controlId="formBasicUserName">
@@ -122,12 +125,18 @@ const Register = ({ setLoggedUser }) => {
               onChange={(e) => handleChange(e)}
             />
           </Form.Group>
-          <Link to="/auth/login" className="btn-primary text-decoration-none">
+          {loading ? (
+            <div className="text-center">
+            <span class="loader"></span>
+            </div>
+          ) : (
+            <div className="text-center">
+              <button className="btn-yellow">Register</button>
+            </div>
+          )}
+          <Link to="/auth/login" className="btn btnBack text-decoration-none">
             Back to login
           </Link>
-          <div className="text-center">
-            <button className="btn-yellow">Send</button>
-          </div>
         </Form>
         {error ? (
           <Alert variant="danger" onClick={() => setError(false)} dismissible>

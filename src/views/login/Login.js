@@ -48,8 +48,8 @@ const Login = ({ setLoggedUser }) => {
 
   return (
     <div>
-      <Container className="py-5">
-        <h1>Login</h1>
+      <Container className="py-5 loginContainer">
+        <h1 className="loginTitle">Login</h1>
         <hr />
         <Form className="my-5" onSubmit={handleSubmit}>
           <Form.Group className="mb-3" controlId="formBasicEmail">
@@ -75,7 +75,7 @@ const Login = ({ setLoggedUser }) => {
           </Form.Group>
           <Link
             to="/auth/register"
-            className="btn-primary text-decoration-none"
+            className="btn btnNewUser text-decoration-none "
           >
             Register new user
           </Link>
