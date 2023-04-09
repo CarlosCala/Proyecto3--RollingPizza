@@ -417,3 +417,16 @@
     transform: rotate(360deg);
   }
 } 
+
+/* mostrar contraseña */
+
+.formShowPassword{
+  width: 5rem;
+  /* background-color:#6A040F; */
+  color: #F48C06 !important;
+}
+
+.showPassword{
+  background-color:#FF3D00 !important;
+  color: white !important;
+}
