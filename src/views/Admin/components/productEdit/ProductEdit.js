@@ -90,8 +90,8 @@ const ProductEdit = ({ URL, getApi }) => {
 
   return (
     <div>
-      <Container className="py-5">
-        <h1>Edit Product</h1>
+      <Container className="py-5 containerEditProduct">
+        <h1 className="editProduct">Edit Product</h1>
         <hr />
         {/* Form Product */}
         <Form className="my-5" onSubmit={handleSubmit}>

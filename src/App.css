@@ -157,8 +157,14 @@
 .bgEditUser {
   background: rgb(255, 186, 8);
   background: linear-gradient(90deg, rgba(255, 186, 8, 1) 0%, rgba(244, 140, 6, 1) 58%, rgba(106, 4, 15, 1) 97%);
+  /* box-shadow: 15px 10px 15px rgba(0, 0, 0, 0.466); */
 }
 
+.editProduct{
+  background: rgb(255, 186, 8);
+  background: linear-gradient(90deg, rgba(255, 186, 8, 1) 0%, rgba(244, 140, 6, 1) 58%, rgba(106, 4, 15, 1) 97%);
+  /* box-shadow: 15px 10px 15px rgba(0, 0, 0, 0.466); */
+}
 /* ************* carrousel ********************/
 
 .carrousel-img {
@@ -204,10 +210,18 @@
   background: linear-gradient(90deg, rgba(208, 0, 0, 1) 0%, rgba(232, 93, 4, 1) 72%, rgba(250, 163, 7, 1) 100%);
 }
 
+@import url(https://fonts.googleapis.com/css2?family=Roboto:wght@100;200;300;400;500;600;800;900&display=swap);
+
+ 
+
+/* navigations */
+.navigations{
+  font-family: 'Roboto', sans-serif;
+}
 /* button logout */
 
 .css-button-arrow--red {
-  margin-top: 1.5rem;
+  margin-top: 1rem;
   min-width: 130px;
   max-width: 2rem;
   height: 40px;
@@ -283,7 +297,7 @@
 
 /* register */
 .registerContainer:hover {
-  background-color: #f48d063a;
+  background-color: rgba(244, 141, 6, 0.227);
   box-shadow: #d00000a2 -5px 5px,
     #8b01017c -10px 10px,
     #8d010185 -15px 15px,
@@ -294,8 +308,11 @@
 
 .createProductContainer,
 .orderStatusContainer,
-.editUserContainer {
+.editUserContainer,
+.containerEditProduct {
+  margin-top: 2rem;
   width: 40rem !important;
+   box-shadow: 10px 10px 15px 10px rgba(136, 77, 1, 0.384);
 }
 
 /* mediaQueries */
@@ -313,7 +330,8 @@
   .registerContainer,
   .createProductContainer,
   .orderStatusContainer,
-  .editUserContainer {
+  .editUserContainer,
+  .containerEditProduct {
     width: 80% !important;
   }
 }
@@ -349,7 +367,8 @@
   .registerContainer,
   .createProductContainer,
   .orderStatusContainer,
-  .editUserContainer {
+  .editUserContainer,
+  .containerEditProduct {
     width: 80% !important;
   }
 }
@@ -371,7 +390,9 @@
   .registerContainer,
   .createProductContainer,
   .orderStatusContainer,
-  .editUserContainer {
+  .editUserContainer, 
+  .containerEditProduct
+   {
     width: 80% !important;
   }
 }
