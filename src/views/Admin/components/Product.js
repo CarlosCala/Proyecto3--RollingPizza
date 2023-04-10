@@ -37,6 +37,7 @@ const Product = ({ product, URL, getApi }) => {
       <td>{product._id}</td>
       <td>{product.productName}</td>
       <td>${product.price}</td>
+      <td>{product.description}</td>
       <td>
         <p className="truncate-img-link m-0">{product.urlImg}</p>
       </td>
@@ -45,12 +46,12 @@ const Product = ({ product, URL, getApi }) => {
         <div className="d-flex justify-content-center">
           <Link
             to={`/product/edit/${product._id}`}
-            className="btn-orange mx-1 text-decoration-none text-center"
+            className=" btn btn-warning mx-1 text-decoration-none text-center btnProductTable"
           >
             Update
           </Link>
           <button
-            className="btn-red mx-1"
+            className="btn btn-danger mx-1 btnProductTable"
             onClick={() => handleDelete(product._id)}
           >
             Delete

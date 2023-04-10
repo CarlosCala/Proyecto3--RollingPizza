@@ -438,3 +438,7 @@
     transform: rotate(360deg);
   }
 } 
+
+.btnProductTable{
+  width: 5rem !important;
+}
