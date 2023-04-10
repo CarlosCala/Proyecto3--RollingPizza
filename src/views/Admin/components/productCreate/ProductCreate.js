@@ -118,7 +118,7 @@ const ProductCreate = ({ URL, getApi }) => {
               isInvalid={inputs.productName && /[^a-zA-Z\s]/.test(inputs.productName)}
             />
             <Form.Control.Feedback type="invalid">
-              No se permiten números o simbolos como nombre de producto
+            No numbers or symbols are allowed as product name.
             </Form.Control.Feedback>
           </Form.Group>
           <Form.Group className="mb-3" controlId="formBasicPassword">
@@ -134,7 +134,7 @@ const ProductCreate = ({ URL, getApi }) => {
               isInvalid={inputs.price > 10000}
             />
             <Form.Control.Feedback type="invalid">
-              el precio debe ser menor de $10000
+             the price must be less than $10000
             </Form.Control.Feedback>
           </Form.Group>
           <Form.Group className="mb-3" controlId="formBasicEmail">
