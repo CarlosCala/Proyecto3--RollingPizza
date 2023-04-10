@@ -53,6 +53,7 @@ const AdminTable = ({ products, URL, getApi }) => {
                 <th>N.</th>
                 <th>Name</th>
                 <th>Price</th>
+                <th>description</th>
                 <th>Image url</th>
                 <th>category</th>
                 <th>Actions</th>

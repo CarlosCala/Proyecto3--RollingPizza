@@ -50,6 +50,7 @@ const Register = ({ setLoggedUser }) => {
     if (!isValidForm) {
       return;
     }
+    
     if (inputs.password !== inputs.passwordTwo) {
       setErrorMessage("Las contraseñas no coinciden");
       setError(true);

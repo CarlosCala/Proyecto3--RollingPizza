@@ -88,8 +88,7 @@ const ProductDetail = ({ URL, getApi, UrlOrder, getApiOrder }) => {
             <Card.Body className="text-center">
               <Card.Title>{product.productName}</Card.Title>
               <Card.Text>
-                Some quick example text to build on the card title and make up
-                the bulk of the card's content.
+                {product.description}
               </Card.Text>
             </Card.Body>
           </Card>
@@ -115,6 +114,7 @@ const ProductDetail = ({ URL, getApi, UrlOrder, getApiOrder }) => {
                 name="price"
                 defaultValue={product.price}
                 ref={productPriceRef}
+                disabled
               />
             </Form.Group>
             <Form.Group className="mb-3" controlId="formBasicCheckbox">

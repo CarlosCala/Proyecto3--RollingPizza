@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import { Container, Form } from "react-bootstrap";
 import Swal from "sweetalert2";
 import {
@@ -13,22 +13,40 @@ import axios from "../../../../config/axiosInit";
 const ProductCreate = ({ URL, getApi }) => {
 
   const [inputs, setInputs] = useState({});
+  const [errorMessage, setErrorMessage] = useState("");
   //useNavigate
   const navigate = useNavigate();
+
+  const resetValidation = () => {
+    form.current.classList.remove("was-validated");
+  };
+
+  const form = useRef();
 
   const handleChange = (e) => {
     const name = e.target.name;
     const value = e.target.value;
+
+    resetValidation();
 
     setInputs((values) => ({ ...values, [name]: value }));
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    const isValidForm = form.current.checkValidity();
+    form.current.classList.add("was-validated");
+
+    if (!isValidForm) {
+      return;
+    }
+
     if (
 
       !validateProductName(inputs.productName) ||
       !validatePrice(inputs.price) ||
+      !validateProductName(inputs.description) ||
       !validateUrl(inputs.urlImg) ||
       !validateCategory(inputs.category)
     ) {
@@ -40,6 +58,7 @@ const ProductCreate = ({ URL, getApi }) => {
       // para un solo estado con varios inputs
       productName: inputs.productName,
       price: inputs.price,
+      description: inputs.description,
       urlImg: inputs.urlImg,
       category: inputs.category,
     };
@@ -86,7 +105,7 @@ const ProductCreate = ({ URL, getApi }) => {
         </div>
         <hr />
         {/* Form Product */}
-        <Form className="my-5" onSubmit={handleSubmit}>
+        <Form className="my-5" onSubmit={handleSubmit} ref={form}>
           <Form.Group className="mb-3" controlId="formBasicEmail">
             <Form.Label>Product name*</Form.Label>
             <Form.Control
@@ -95,7 +114,12 @@ const ProductCreate = ({ URL, getApi }) => {
               name="productName"
               value={inputs.productName || ""}
               onChange={(e) => handleChange(e)}
+              maxLength={50}
+              isInvalid={inputs.productName && /[^a-zA-Z\s]/.test(inputs.productName)}
             />
+            <Form.Control.Feedback type="invalid">
+              No se permiten números o simbolos como nombre de producto
+            </Form.Control.Feedback>
           </Form.Group>
           <Form.Group className="mb-3" controlId="formBasicPassword">
             <Form.Label>Price*</Form.Label>
@@ -105,6 +129,23 @@ const ProductCreate = ({ URL, getApi }) => {
               name="price"
               value={inputs.price || ""}
               onChange={(e) => handleChange(e)}
+              min={1}
+              max={10000}
+              isInvalid={inputs.price > 10000}
+            />
+            <Form.Control.Feedback type="invalid">
+              el precio debe ser menor de $10000
+            </Form.Control.Feedback>
+          </Form.Group>
+          <Form.Group className="mb-3" controlId="formBasicEmail">
+            <Form.Label>Description*</Form.Label>
+            <Form.Control
+              type="text"
+              placeholder="pizza topped with mozzarella cheese and cantimpalo"
+              name="description"
+              value={inputs.description || ""}
+              onChange={(e) => handleChange(e)}
+              maxLength={150}
             />
           </Form.Group>
           <Form.Group className="mb-3" controlId="formBasicPassword">

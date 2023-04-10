@@ -439,6 +439,11 @@
   }
 } 
 
+
+.btnProductTable{
+  width: 5rem !important;
+}
+
 /* mostrar contraseña */
 
 .formShowPassword{
@@ -451,3 +456,4 @@
   background-color:#FF3D00 !important;
   color: white !important;
 }
+
