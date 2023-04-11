@@ -4,6 +4,8 @@ import { Alert, Container, Form } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import axios from "../../config/axiosInit";
+import emailjs from '@emailjs/browser';
+
 
 const Register = ({ setLoggedUser }) => {
   const [inputs, setInputs] = useState({});
@@ -81,7 +83,17 @@ const Register = ({ setLoggedUser }) => {
     } finally {
       setLoading(false);
     }
+
+    emailjs.sendForm('service_bu5pb33', 'template_7qe4chh', form.current, 'P_xOKQw16BgcYaIBL')
+    .then((result) => {
+        console.log(result.text);
+    }, (error) => {
+        console.log(error.text);
+    });
+  
   };
+
+
 
   return (
     <div>
