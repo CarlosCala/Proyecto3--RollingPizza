@@ -8,6 +8,7 @@ const Login = ({ setLoggedUser }) => {
   const [inputs, setInputs] = useState({});
   const [error, setError] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const URL = process.env.REACT_APP_API_USARIOS;
   const handleChange = (event) => {
@@ -24,18 +25,25 @@ const Login = ({ setLoggedUser }) => {
     //===========  en helpers realizar las validaciones para email
     //Envio los datos
     try {
+      setLoading(true);
       const res = await axios.post(`${URL}/login`, {
         email: inputs.email,
         password: inputs.password,
       });
+
       if (res.status === 200) {
         Swal.fire("Logged!", "Your user has been logged.", "success");
-        //const data = await res.json(); //si es con fetch
         const data = res.data;
         //guardar en localStorage el token
-        localStorage.setItem("user-token", JSON.stringify(data));
+        if (data.admin === "administrador") {
+          localStorage.setItem("user-token", JSON.stringify(data));
+          setLoggedUser(data);
+        } else {
+          delete data["token"];
+          localStorage.setItem("user-token", JSON.stringify(data));
+          setLoggedUser(data);
+        }
 
-        setLoggedUser(data);
         navigate("/");
       }
     } catch (error) {
@@ -43,13 +51,15 @@ const Login = ({ setLoggedUser }) => {
       setError(true);
       error.response.data?.message &&
         setErrorMessage(error.response.data.message);
+    } finally {
+      setLoading(false);
     }
   };
 
   return (
     <div>
-      <Container className="py-5">
-        <h1>Login</h1>
+      <Container className="py-5 loginContainer">
+        <h1 className="loginTitle">Login</h1>
         <hr />
         <Form className="my-5" onSubmit={handleSubmit}>
           <Form.Group className="mb-3" controlId="formBasicEmail">
@@ -73,15 +83,23 @@ const Login = ({ setLoggedUser }) => {
               onChange={(e) => handleChange(e)}
             />
           </Form.Group>
-          <Link
-            to="/auth/register"
-            className="btn-primary text-decoration-none"
-          >
-            Register new user
-          </Link>
-          <div className="text-center">
-            <button className="btn-yellow">Send</button>
-          </div>
+          {loading ? (
+            <div className="text-center mt-1">
+              <span class="loader"></span>
+            </div>
+          ) : (
+            <>
+              <Link
+                to="/auth/register"
+                className="btn btnNewUser text-decoration-none "
+              >
+                Register new user
+              </Link>
+              <div className="text-center">
+                <button className="btn-yellow">Send</button>
+              </div>
+            </>
+          )}
         </Form>
         {error ? (
           <Alert variant="danger" onClick={() => setError(false)} dismissible>

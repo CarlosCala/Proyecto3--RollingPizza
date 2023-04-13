@@ -13,15 +13,31 @@ import axios from "../../../../config/axiosInit";
 const ProductEdit = ({ URL, getApi }) => {
   //steate
   const [product, setProduct] = useState({});
+  const [inputs, setInputs] = useState({});
   //useParams
   const { _id } = useParams();
   //variables de referencia - references
   const productNameRef = useRef("");
   const productPriceRef = useRef("");
+  const productDescription = useRef("");
   const productImgRef = useRef("");
 
   const navigate = useNavigate();
 
+  const resetValidation = () => {
+    form.current.classList.remove("was-validated");
+  };
+
+  const form = useRef();
+
+  const handleChange = (e) => {
+    const name = e.target.name;
+    const value = e.target.value;
+
+    resetValidation();
+
+    setInputs((values) => ({ ...values, [name]: value }));
+  };
   //llamado a la api para obtener el producto con su id
 
   useEffect(() => {
@@ -41,21 +57,29 @@ const ProductEdit = ({ URL, getApi }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    const isValidForm = form.current.checkValidity();
+    form.current.classList.add("was-validated");
+
+    if (!isValidForm) {
+      return;
+    }
+
     //validaciones
-    if(
-    !validateProductName(productNameRef.current.value) ||
-    !validatePrice(productPriceRef.current.value) ||
-    !validateUrl(productImgRef.current.value) ||
-    !validateCategory(product.category)
-    )
-     {
-       Swal.fire("oops! ", "Some data is invalid","error")
-       return;
-     }
+    if (
+      !validateProductName(productNameRef.current.value) ||
+      !validatePrice(productPriceRef.current.value) ||
+      !validateUrl(productImgRef.current.value) ||
+      !validateCategory(product.category)
+    ) {
+      Swal.fire("oops! ", "Some data is invalid", "error");
+      return;
+    }
     // guardar el objeto
     const productUpdate = {
       productName: productNameRef.current.value,
       price: productPriceRef.current.value,
+      description: productDescription.current.value,
       urlImg: productImgRef.current.value,
       category: product.category,
     };
@@ -70,7 +94,7 @@ const ProductEdit = ({ URL, getApi }) => {
     }).then(async (result) => {
       if (result.isConfirmed) {
         try {
-          const res = await axios.put(`${URL}/${_id}` , productUpdate);
+          const res = await axios.put(`${URL}/${_id}`, productUpdate);
 
           if (res.status === 200) {
             Swal.fire("Update", "your file has been updated", "succes");
@@ -90,11 +114,11 @@ const ProductEdit = ({ URL, getApi }) => {
 
   return (
     <div>
-      <Container className="py-5">
-        <h1>Edit Product</h1>
+      <Container className="py-5 containerEditProduct">
+        <h1 className="editProduct">Edit Product</h1>
         <hr />
         {/* Form Product */}
-        <Form className="my-5" onSubmit={handleSubmit}>
+        <Form className="my-5" onSubmit={handleSubmit} ref={form}>
           <Form.Group className="mb-3" controlId="formBasicEmail">
             <Form.Label>Product name*</Form.Label>
             <Form.Control
@@ -102,7 +126,15 @@ const ProductEdit = ({ URL, getApi }) => {
               placeholder="Ej: Café"
               defaultValue={product.productName}
               ref={productNameRef}
+              onChange={(e) => handleChange(e)}
+              isInvalid={
+                productNameRef.current.value &&
+                /[^a-zA-Z\s]/.test(productNameRef.current.value)
+              }
             />
+            <Form.Control.Feedback type="invalid">
+              No numbers or symbols are allowed as product name.
+            </Form.Control.Feedback>
           </Form.Group>
           <Form.Group className="mb-3" controlId="formBasicPassword">
             <Form.Label>Price*</Form.Label>
@@ -111,8 +143,30 @@ const ProductEdit = ({ URL, getApi }) => {
               placeholder="Ej: 50"
               defaultValue={product.price}
               ref={productPriceRef}
+              onChange={(e) => handleChange(e)}
+              min={1}
+              max={10000}
+              isInvalid={productPriceRef.current.value > 10000}
+            />
+            <Form.Control.Feedback type="invalid">
+              the price must be less than $10000
+            </Form.Control.Feedback>
+          </Form.Group>
+
+          <Form.Group className="mb-3" controlId="formBasicEmail">
+            <Form.Label>Description*</Form.Label>
+            <Form.Control
+              type="text"
+              placeholder="pizza topped with mozzarella cheese and cantimpalo"
+              name="description"
+              defaultValue={product.description}
+              onChange={(e) => handleChange(e)}
+              maxLength={150}
+              ref={productDescription}
+              required
             />
           </Form.Group>
+
           <Form.Group className="mb-3" controlId="formBasicPassword">
             <Form.Label>Image URL*</Form.Label>
             <Form.Control

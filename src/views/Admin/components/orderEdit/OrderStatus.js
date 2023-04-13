@@ -81,8 +81,8 @@ const OrderStatus = ({ UrlOrder, getApiOrder }) => {
 
   return (
     <div>
-      <Container className="py-5">
-        <div className="EditUser">
+      <Container className="py-5 orderStatusContainer">
+        <div className="bgEditUser">
         <h1 className="display-5">OrderStatus</h1>
         </div>
         <hr />
@@ -130,7 +130,7 @@ const OrderStatus = ({ UrlOrder, getApiOrder }) => {
             </Form.Select>
           </Form.Group>
           <div className="text-end">
-            <button className="btn-orange">Update</button>
+            <button className="btn-red">Update</button>
           </div>
         </Form>
       </Container>

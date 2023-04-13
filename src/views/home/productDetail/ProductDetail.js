@@ -73,28 +73,27 @@ const ProductDetail = ({ URL, getApi, UrlOrder, getApiOrder }) => {
     });
   };
   return (
-    <Container className="bg-productDetail">
+    <Container className="containerProductDetail">
       <Row className="j">
-        <Col sm={8}>
+        <Col >
           <Card
-            style={{ width: "25rem", height: "30rem" }}
-            className="bgCardDetail bg-black text-white"
+            // style={{ width: "25rem", height: "30rem" }}
+            className="bg-cardDetail text-white cardDetail"
           >
             <Card.Img
               variant="top"
               src={product.urlImg}
-              className="imgCardDetail mt-1"
+              className="imgCardDetail"
             />
-            <Card.Body className="text-center">
+            <Card.Body className="text-center cardBodyDetail">
               <Card.Title>{product.productName}</Card.Title>
-              <Card.Text>
-                Some quick example text to build on the card title and make up
-                the bulk of the card's content.
+              <Card.Text className="mt-3">
+                {product.description}
               </Card.Text>
             </Card.Body>
           </Card>
         </Col>
-        <Col sm={4}>
+        <Col >
           {/* Form Product */}
           <Form className="my-5" onSubmit={handleSubmit}>
             <Form.Group className="mb-3" controlId="formBasicEmail">
@@ -115,6 +114,7 @@ const ProductDetail = ({ URL, getApi, UrlOrder, getApiOrder }) => {
                 name="price"
                 defaultValue={product.price}
                 ref={productPriceRef}
+                disabled
               />
             </Form.Group>
             <Form.Group className="mb-3" controlId="formBasicCheckbox">

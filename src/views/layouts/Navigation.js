@@ -1,15 +1,56 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Button, Container, Nav, Navbar } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
 
 const Navigation = ({ loggedUser, setLoggedUser }) => {
+  const [admin, setAdmin] = useState("");
+
   const navigate = useNavigate();
+
+  useEffect(() => {
+    getUsers();
+  }, [loggedUser]);
+
+  const getUsers = async () => {
+    setAdmin(loggedUser.admin);
+  };
+
+  if (admin === "administrador") {
+    localStorage.setItem("authorized", JSON.stringify("true"));
+  }
 
   const logout = () => {
     localStorage.removeItem("user-token");
+    localStorage.removeItem("authorized");
     setLoggedUser({});
+    setAdmin("");
     navigate("/");
   };
+
+  const isAdmin = loggedUser?.token ? (
+    <>
+      <Link className="nav-link " to="/product/table">
+        {" "}
+        Admin page
+      </Link>
+      <Button className="css-button-arrow--red" onClick={logout}>
+        Logout
+      </Button>
+    </>
+  ) : loggedUser && Object.keys(loggedUser).length > 0 ? (
+    <>
+    <Link className="nav-link" to="/contact">
+      ContacUs
+    </Link>
+    <Button className="css-button-arrow--red" onClick={logout}>
+      Logout
+    </Button>
+    </>
+  ) : (
+    <Link className="nav-link" to="/auth/login/">
+      Login
+    </Link>
+  );
 
   return (
     <div className="bgNavigation">
@@ -26,27 +67,12 @@ const Navigation = ({ loggedUser, setLoggedUser }) => {
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
-            <div></div>
-            <Nav className="ms-auto color-nav display-5">
+            <Nav className="ms-auto color-nav navigations">
               <Link className="nav-link" to="/">
                 Home
               </Link>
 
-              {loggedUser?.token ? (
-                <>
-                  <Link className="nav-link " to="/product/table">
-                    {" "}
-                    Admin page
-                  </Link>
-                  <Button className="css-button-arrow--red" onClick={logout}>
-                    Logout
-                  </Button>
-                </>
-              ) : (
-                <Link className="nav-link" to="/auth/login/">
-                  Login
-                </Link>
-              )}
+              {isAdmin}
             </Nav>
           </Navbar.Collapse>
         </Container>

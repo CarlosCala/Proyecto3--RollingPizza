@@ -78,8 +78,8 @@ const UserEdit = ({ UrlUser, getApiUser }) => {
 
   return (
     <div>
-      <Container className="py-5">
-        <div className="EditUser">
+      <Container className="py-5 editUserContainer">
+        <div className="bgEditUser">
           <h1 className="display-5">Edit User</h1>
         </div>
         <hr />
@@ -91,6 +91,7 @@ const UserEdit = ({ UrlUser, getApiUser }) => {
               type="text"
               defaultValue={user.name}
               ref={userNameRef}
+              disabled
             />
           </Form.Group>
           <Form.Group className="mb-3" controlId="formBasicPassword">
