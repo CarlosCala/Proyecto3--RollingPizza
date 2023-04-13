@@ -70,10 +70,7 @@ const Register = ({ setLoggedUser }) => {
       const res = await axios.post(`${URL}/register`, newUser);
       if (res.status === 201) {
         Swal.fire("Created!", "Your user has been created.", "success");
-        // const data = await res.json(); // si es con fetch
         const data = res.data;
-        // localStorage.setItem("user-token", JSON.stringify(data));
-        // setLoggedUser(data);
         navigate("/auth/login/");
       }
     } catch (error) {

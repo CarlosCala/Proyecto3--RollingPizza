@@ -28,14 +28,20 @@ const Login = ({ setLoggedUser }) => {
         email: inputs.email,
         password: inputs.password,
       });
+
       if (res.status === 200) {
         Swal.fire("Logged!", "Your user has been logged.", "success");
-        //const data = await res.json(); //si es con fetch
         const data = res.data;
         //guardar en localStorage el token
-        localStorage.setItem("user-token", JSON.stringify(data));
+        if (data.admin === "administrador") {
+          localStorage.setItem("user-token", JSON.stringify(data));
+          setLoggedUser(data);
+        } else {
+          delete data["token"];
+          localStorage.setItem("user-token", JSON.stringify(data));
+          setLoggedUser(data);
+        }
 
-        setLoggedUser(data);
         navigate("/");
       }
     } catch (error) {

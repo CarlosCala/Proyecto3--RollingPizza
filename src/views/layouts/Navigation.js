@@ -1,15 +1,51 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Button, Container, Nav, Navbar } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
 
 const Navigation = ({ loggedUser, setLoggedUser }) => {
+  const [admin, setAdmin] = useState("");
+
   const navigate = useNavigate();
+
+  useEffect(() => {
+    getUsers();
+  }, [loggedUser]);
+
+  const getUsers = async () => {
+    setAdmin(loggedUser.admin);
+  };
+
+  if (admin === "administrador") {
+    localStorage.setItem("authorized", JSON.stringify("true"));
+  }
 
   const logout = () => {
     localStorage.removeItem("user-token");
+    localStorage.removeItem("authorized");
     setLoggedUser({});
+    setAdmin("");
     navigate("/");
   };
+
+  const isAdmin = loggedUser?.token ? (
+    <>
+      <Link className="nav-link " to="/product/table">
+        {" "}
+        Admin page
+      </Link>
+      <Button className="css-button-arrow--red" onClick={logout}>
+        Logout
+      </Button>
+    </>
+  ) : loggedUser && Object.keys(loggedUser).length > 0 ? (
+    <Button className="css-button-arrow--red" onClick={logout}>
+      Logout
+    </Button>
+  ) : (
+    <Link className="nav-link" to="/auth/login/">
+      Login
+    </Link>
+  );
 
   return (
     <div className="bgNavigation">
@@ -32,21 +68,7 @@ const Navigation = ({ loggedUser, setLoggedUser }) => {
                 Home
               </Link>
 
-              {loggedUser?.token ? (
-                <>
-                  <Link className="nav-link " to="/product/table">
-                    {" "}
-                    Admin page
-                  </Link>
-                  <Button className="css-button-arrow--red" onClick={logout}>
-                    Logout
-                  </Button>
-                </>
-              ) : (
-                <Link className="nav-link" to="/auth/login/">
-                  Login
-                </Link>
-              )}
+              {isAdmin}
             </Nav>
           </Navbar.Collapse>
         </Container>
