@@ -149,22 +149,15 @@
   border: none;
 }
 
-.bg-AddProduct {
+.bg-AddProduct, 
+.editProduct,
+.bgEditUser,
+.bgContactForm
+ {
   background: rgb(255, 186, 8);
   background: linear-gradient(90deg, rgba(255, 186, 8, 1) 0%, rgba(244, 140, 6, 1) 58%, rgba(106, 4, 15, 1) 97%);
 }
 
-.bgEditUser {
-  background: rgb(255, 186, 8);
-  background: linear-gradient(90deg, rgba(255, 186, 8, 1) 0%, rgba(244, 140, 6, 1) 58%, rgba(106, 4, 15, 1) 97%);
-  /* box-shadow: 15px 10px 15px rgba(0, 0, 0, 0.466); */
-}
-
-.editProduct{
-  background: rgb(255, 186, 8);
-  background: linear-gradient(90deg, rgba(255, 186, 8, 1) 0%, rgba(244, 140, 6, 1) 58%, rgba(106, 4, 15, 1) 97%);
-  /* box-shadow: 15px 10px 15px rgba(0, 0, 0, 0.466); */
-}
 /* ************* carrousel ********************/
 
 .carrousel-img {
@@ -309,7 +302,8 @@
 .createProductContainer,
 .orderStatusContainer,
 .editUserContainer,
-.containerEditProduct {
+.containerEditProduct ,
+.contactFormContainer{
   margin-top: 2rem;
   width: 40rem !important;
    box-shadow: 10px 10px 15px 10px rgba(136, 77, 1, 0.384);
@@ -331,7 +325,8 @@
   .createProductContainer,
   .orderStatusContainer,
   .editUserContainer,
-  .containerEditProduct {
+  .containerEditProduct,
+  .contactFormContainer {
     width: 80% !important;
   }
 }
@@ -368,7 +363,8 @@
   .createProductContainer,
   .orderStatusContainer,
   .editUserContainer,
-  .containerEditProduct {
+  .containerEditProduct,
+  .contactFormContainer {
     width: 80% !important;
   }
 }
@@ -391,7 +387,8 @@
   .createProductContainer,
   .orderStatusContainer,
   .editUserContainer, 
-  .containerEditProduct
+  .containerEditProduct,
+  .contactFormContainer
    {
     width: 80% !important;
   }

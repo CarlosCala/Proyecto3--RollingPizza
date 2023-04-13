@@ -17,6 +17,7 @@ import ProductDetail from "./views/home/productDetail/ProductDetail";
 import Error404 from "./views/layouts/Error404";
 import OrderTable from "./views/Admin/OrderTable";
 import OrderStatus from "./views/Admin/components/orderEdit/OrderStatus";
+import ContactUs from "./views/home/contactUs/ContactUs";
 
 function App() {
   const [products, setProducts] = useState([]);
@@ -80,6 +81,11 @@ function App() {
               exact
               path="/"
               element={<Home products={products} loggedUser={loggedUser} />}
+            />
+             <Route
+              exact
+              path="/contact"
+              element={<ContactUs/>}
             />
             <Route
               exact

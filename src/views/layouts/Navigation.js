@@ -38,9 +38,14 @@ const Navigation = ({ loggedUser, setLoggedUser }) => {
       </Button>
     </>
   ) : loggedUser && Object.keys(loggedUser).length > 0 ? (
+    <>
+    <Link className="nav-link" to="/contact">
+      ContacUs
+    </Link>
     <Button className="css-button-arrow--red" onClick={logout}>
       Logout
     </Button>
+    </>
   ) : (
     <Link className="nav-link" to="/auth/login/">
       Login
