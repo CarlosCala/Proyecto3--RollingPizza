@@ -210,11 +210,12 @@
 /* navigations */
 .navigations{
   font-family: 'Roboto', sans-serif;
+  font-size: 2.2rem;
 }
 /* button logout */
 
 .css-button-arrow--red {
-  margin-top: 1rem;
+  margin-top: 0.9rem;
   min-width: 130px;
   max-width: 2rem;
   height: 40px;
@@ -309,6 +310,28 @@
    box-shadow: 10px 10px 15px 10px rgba(136, 77, 1, 0.384);
 }
 
+/* card detail */
+.cardDetail{
+  margin-top: 2rem;
+  width: 22rem !important;
+  height: 30rem !important;
+}
+
+.containerProductDetail{
+  display: flex;
+  justify-content: center;
+  width: 80% !important;
+}
+
+.cardBodyDetail{
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center !important;
+}
+.bg-cardDetail{
+  background-color: rgba(0, 0, 0, 0.404) !important;
+}
 /* mediaQueries */
 
 @media (max-width: 768px) {
@@ -326,7 +349,8 @@
   .orderStatusContainer,
   .editUserContainer,
   .containerEditProduct,
-  .contactFormContainer {
+  .contactFormContainer,
+  .containerProductDetail {
     width: 80% !important;
   }
 }
@@ -364,7 +388,8 @@
   .orderStatusContainer,
   .editUserContainer,
   .containerEditProduct,
-  .contactFormContainer {
+  .contactFormContainer,
+  .containerProductDetail  {
     width: 80% !important;
   }
 }
@@ -388,7 +413,8 @@
   .orderStatusContainer,
   .editUserContainer, 
   .containerEditProduct,
-  .contactFormContainer
+  .contactFormContainer,
+  .containerProductDetail
    {
     width: 80% !important;
   }
