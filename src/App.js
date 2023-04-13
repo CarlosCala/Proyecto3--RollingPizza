@@ -82,11 +82,7 @@ function App() {
               path="/"
               element={<Home products={products} loggedUser={loggedUser} />}
             />
-             <Route
-              exact
-              path="/contact"
-              element={<ContactUs/>}
-            />
+            <Route exact path="/contact" element={<ContactUs />} />
             <Route
               exact
               path="/product/table"

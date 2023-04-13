@@ -9,10 +9,7 @@ const AdminTable = ({ products, URL, getApi }) => {
     <>
       <Container className="adminTable p-4">
         <div>
-        <Link
-            to="/"
-            className="btn btn-outline-danger text-center"
-          >
+          <Link to="/" className="btn btn-outline-danger text-center">
             Home
           </Link>
         </div>
@@ -38,23 +35,27 @@ const AdminTable = ({ products, URL, getApi }) => {
         </div>
         <hr />
         <div className="text-center">
-        <Link 
+          <Link
             to="/product/create"
             className="btn btn-outline-danger text-center"
           >
             Add Product
           </Link>
-          </div>
+        </div>
         {/* Table of products */}
         {products?.length !== 0 ? (
-          <Table bordered hover responsive className="align-middle mt-3 text-white bg-black">
+          <Table
+            bordered
+            hover
+            responsive
+            className="align-middle mt-3 text-white bg-black"
+          >
             <thead>
               <tr>
                 <th>N.</th>
                 <th>Name</th>
                 <th>Price</th>
                 <th>description</th>
-                <th>Image url</th>
                 <th>category</th>
                 <th>Actions</th>
               </tr>

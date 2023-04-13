@@ -4,8 +4,7 @@ import { Alert, Container, Form } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import axios from "../../config/axiosInit";
-import emailjs from '@emailjs/browser';
-
+import emailjs from "@emailjs/browser";
 
 const Register = ({ setLoggedUser }) => {
   const [inputs, setInputs] = useState({});
@@ -52,7 +51,7 @@ const Register = ({ setLoggedUser }) => {
     if (!isValidForm) {
       return;
     }
-    
+
     if (inputs.password !== inputs.passwordTwo) {
       setErrorMessage("Las contraseñas no coinciden");
       setError(true);
@@ -81,16 +80,22 @@ const Register = ({ setLoggedUser }) => {
       setLoading(false);
     }
 
-    emailjs.sendForm('service_bu5pb33', 'template_7qe4chh', form.current, 'P_xOKQw16BgcYaIBL')
-    .then((result) => {
-        console.log(result.text);
-    }, (error) => {
-        console.log(error.text);
-    });
-  
+    emailjs
+      .sendForm(
+        "service_bu5pb33",
+        "template_7qe4chh",
+        form.current,
+        "P_xOKQw16BgcYaIBL"
+      )
+      .then(
+        (result) => {
+          console.log(result.text);
+        },
+        (error) => {
+          console.log(error.text);
+        }
+      );
   };
-
-
 
   return (
     <div>
@@ -113,7 +118,7 @@ const Register = ({ setLoggedUser }) => {
               isValid={inputs.name && !/[^a-zA-Z\s]/.test(inputs.name)}
             />
             <Form.Control.Feedback type="invalid">
-            No numbers or symbols allowed as user name.
+              No numbers or symbols allowed as user name.
             </Form.Control.Feedback>
           </Form.Group>
           <Form.Group className="mb-3" controlId="formBasicEmail">
@@ -135,7 +140,7 @@ const Register = ({ setLoggedUser }) => {
               }
             />
             <Form.Control.Feedback type="invalid">
-            Use a correct email format.
+              Use a correct email format.
             </Form.Control.Feedback>
           </Form.Group>
           <Form.Group className="mb-3" controlId="formBasicPassword">
@@ -153,12 +158,15 @@ const Register = ({ setLoggedUser }) => {
             />
           </Form.Group>
 
-          <Form.Group className="mb-3 text-end formShowPassword" controlId="formBasicPassword">
-              <Form.Control className="showPassword"
+          <Form.Group
+            className="mb-3 text-end formShowPassword"
+            controlId="formBasicPassword"
+          >
+            <Form.Control
+              className="showPassword"
               type="button"
               value={shown ? "Ocultar" : "Mostrar"}
-              onClick = {switchShown}
-              
+              onClick={switchShown}
             />
           </Form.Group>
           <Form.Group className="mb-3" controlId="formBasicPasswordRep">

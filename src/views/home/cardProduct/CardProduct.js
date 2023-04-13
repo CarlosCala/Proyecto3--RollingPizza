@@ -4,8 +4,6 @@ import { Card, Col, Row } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
 
 const CardProduct = ({ product, loggedUser }) => {
-
-
   return (
     <div>
       <Card className="my-4 cardProduct border border-ligth cardsProducts">

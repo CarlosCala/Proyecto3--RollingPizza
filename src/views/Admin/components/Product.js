@@ -38,9 +38,6 @@ const Product = ({ product, URL, getApi }) => {
       <td>{product.productName}</td>
       <td>${product.price}</td>
       <td>{product.description}</td>
-      <td>
-        <p className="truncate-img-link m-0">{product.urlImg}</p>
-      </td>
       <td>{product.category}</td>
       <td className="w-25">
         <div className="d-flex justify-content-center">
