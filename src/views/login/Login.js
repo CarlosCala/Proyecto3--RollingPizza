@@ -8,6 +8,7 @@ const Login = ({ setLoggedUser }) => {
   const [inputs, setInputs] = useState({});
   const [error, setError] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const URL = process.env.REACT_APP_API_USARIOS;
   const handleChange = (event) => {
@@ -24,6 +25,7 @@ const Login = ({ setLoggedUser }) => {
     //===========  en helpers realizar las validaciones para email
     //Envio los datos
     try {
+      setLoading(true);
       const res = await axios.post(`${URL}/login`, {
         email: inputs.email,
         password: inputs.password,
@@ -49,6 +51,8 @@ const Login = ({ setLoggedUser }) => {
       setError(true);
       error.response.data?.message &&
         setErrorMessage(error.response.data.message);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -79,15 +83,23 @@ const Login = ({ setLoggedUser }) => {
               onChange={(e) => handleChange(e)}
             />
           </Form.Group>
-          <Link
-            to="/auth/register"
-            className="btn btnNewUser text-decoration-none "
-          >
-            Register new user
-          </Link>
-          <div className="text-center">
-            <button className="btn-yellow">Send</button>
-          </div>
+          {loading ? (
+            <div className="text-center mt-1">
+              <span class="loader"></span>
+            </div>
+          ) : (
+            <>
+              <Link
+                to="/auth/register"
+                className="btn btnNewUser text-decoration-none "
+              >
+                Register new user
+              </Link>
+              <div className="text-center">
+                <button className="btn-yellow">Send</button>
+              </div>
+            </>
+          )}
         </Form>
         {error ? (
           <Alert variant="danger" onClick={() => setError(false)} dismissible>
