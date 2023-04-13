@@ -113,7 +113,7 @@ const Register = ({ setLoggedUser }) => {
               isValid={inputs.name && !/[^a-zA-Z\s]/.test(inputs.name)}
             />
             <Form.Control.Feedback type="invalid">
-              No se permiten números o simbolos como nombre de usuario
+            No numbers or symbols allowed as user name.
             </Form.Control.Feedback>
           </Form.Group>
           <Form.Group className="mb-3" controlId="formBasicEmail">
@@ -135,7 +135,7 @@ const Register = ({ setLoggedUser }) => {
               }
             />
             <Form.Control.Feedback type="invalid">
-              Utilice un formato de email correcto
+            Use a correct email format.
             </Form.Control.Feedback>
           </Form.Group>
           <Form.Group className="mb-3" controlId="formBasicPassword">
