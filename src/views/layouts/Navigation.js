@@ -67,8 +67,7 @@ const Navigation = ({ loggedUser, setLoggedUser }) => {
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
-            <div></div>
-            <Nav className="ms-auto color-nav display-6 navigations">
+            <Nav className="ms-auto color-nav navigations">
               <Link className="nav-link" to="/">
                 Home
               </Link>
