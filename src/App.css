@@ -304,10 +304,17 @@
 .orderStatusContainer,
 .editUserContainer,
 .containerEditProduct ,
-.contactFormContainer{
+.contactFormContainer
+{
   margin-top: 2rem;
   width: 40rem !important;
    box-shadow: 10px 10px 15px 10px rgba(136, 77, 1, 0.384);
+}
+
+/* error404 */
+
+.error404{
+  margin-top: 2rem;
 }
 
 /* card detail */
