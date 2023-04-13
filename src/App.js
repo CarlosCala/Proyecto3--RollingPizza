@@ -17,7 +17,6 @@ import ProductDetail from "./views/home/productDetail/ProductDetail";
 import Error404 from "./views/layouts/Error404";
 import OrderTable from "./views/Admin/OrderTable";
 import OrderStatus from "./views/Admin/components/orderEdit/OrderStatus";
-import { set } from "lodash";
 
 function App() {
   const [products, setProducts] = useState([]);
@@ -31,19 +30,13 @@ function App() {
 
   useEffect(() => {
     getApi();
-  }, []);
-
-  useEffect(() => {
     getApiUser();
-  }, []);
-
-  useEffect(() => {
     isLoged();
   }, []);
 
   const isLoged = () => {
     if (!JSON.parse(localStorage.getItem("user-token"))) {
-      setLoggedUser({});
+      return setLoggedUser({});
     }
     setLoggedUser(JSON.parse(localStorage.getItem("user-token")));
   };
