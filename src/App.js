@@ -36,6 +36,7 @@ function App() {
     isLoged();
   }, []);
 
+
   const isLoged = () => {
     if (!JSON.parse(localStorage.getItem("user-token"))) {
       return setLoggedUser({});

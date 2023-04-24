@@ -33,9 +33,6 @@ const Orders = ({ getApiOrder }) => {
       email: email,
       total: totalPrice,
     };
-
-    console.log(newOrder);
-
     Swal.fire({
       title: "Are you sure you want to order this?",
       text: "You won't be able to revert this!",
