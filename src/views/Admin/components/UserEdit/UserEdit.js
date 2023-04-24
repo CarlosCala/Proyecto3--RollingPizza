@@ -29,7 +29,7 @@ const UserEdit = ({ UrlUser, getApiUser }) => {
       const userApi = await res.data;
       setUser(userApi);
     } catch (error) {
-      console.log(error);
+      Swal.fire('database error')
     }
   };
 

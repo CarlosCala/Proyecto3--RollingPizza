@@ -26,7 +26,7 @@ const OrderStatus = ({ UrlOrder, getApiOrder }) => {
       const orderApi = await res.data;
       setOrder(orderApi);
     } catch (error) {
-      console.log(error);
+      Swal.fire('database error')
     }
   };
 

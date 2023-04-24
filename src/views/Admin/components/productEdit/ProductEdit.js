@@ -51,7 +51,7 @@ const ProductEdit = ({ URL, getApi }) => {
       const productApi = await res.data;
       setProduct(productApi);
     } catch (error) {
-      console.log(error);
+      Swal.fire('database error')
     }
   };
 
