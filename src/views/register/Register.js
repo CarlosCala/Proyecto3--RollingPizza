@@ -30,21 +30,15 @@ const Register = ({ setLoggedUser }) => {
 
     setInputs((values) => ({ ...values, [name]: value }));
   };
-
-  //useNavigate
   const navigate = useNavigate();
 
-  // mostrar contraseña
   const switchShown = () => setShown(!shown);
 
   const onPassword = ({ currentTarget }) => setPassword(currentTarget.value);
 
-  //Funcion para crear el usuario
-
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    //Valido los campos
     const isValidForm = form.current.checkValidity();
     form.current.classList.add("was-validated");
 
@@ -58,7 +52,6 @@ const Register = ({ setLoggedUser }) => {
       return;
     }
 
-    //Envio los datos para guardarlos
     const newUser = {
       name: inputs.name,
       email: inputs.email,

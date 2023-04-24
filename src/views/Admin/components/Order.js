@@ -11,8 +11,6 @@ const Order = ({ order, UrlOrder, getApiOrder }) => {
   });
 
 
-
-
   return (
     <tr>
       <td>{order._id}</td>
