@@ -1,29 +1,15 @@
-import React, { useEffect, useRef, useState } from "react";
-import { Button, Form, Modal } from "react-bootstrap";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import React from "react";
 
-import Swal from "sweetalert2";
-import axios from "../../../config/axiosInit";
+import { Link } from "react-router-dom";
 
-const Order = ({ order, UrlOrder, getApiOrder }) => {
-
-  const [show, setShow] = useState(false);
-
+const Order = ({ order }) => {
   console.log(order.total);
 
-const products = order.order
+  const products = order.order;
 
-const ordenes = products.map((prod) => {
-  return  prod.productName + " - "
-}
-  )
-
-  console.log(ordenes);
-
-
-
-
-
+  const ordenes = products.map((prod) => {
+    return prod.productName + " - ";
+  });
 
   return (
     <tr>
