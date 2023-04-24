@@ -43,7 +43,6 @@ const Login = ({ setLoggedUser }) => {
         navigate("/");
       }
     } catch (error) {
-      console.log(error);
       setError(true);
       error.response.data?.message &&
         setErrorMessage(error.response.data.message);

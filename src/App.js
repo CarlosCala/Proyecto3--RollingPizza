@@ -50,7 +50,6 @@ function App() {
       const productsApi = res.data;
       setProducts(productsApi);
     } catch (error) {
-      console.log(error);
     }
   };
 
@@ -60,7 +59,6 @@ function App() {
       const userApi = res.data;
       setUsers(userApi);
     } catch (error) {
-      console.log(error);
     }
   };
   const getApiOrder = async () => {
@@ -69,7 +67,6 @@ function App() {
       const ordersApi = res.data;
       setOrders(ordersApi);
     } catch (error) {
-      console.log(error);
     }
   };
 

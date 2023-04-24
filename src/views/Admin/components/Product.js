@@ -20,12 +20,10 @@ const Product = ({ product, URL, getApi }) => {
 
           if (res.status === 200) {
             Swal.fire("Deleted!", "Your file has been deleted.", "success");
-            //recargar la pag
             getApi();
           }
         } catch (error) {
-          // mostrar un swet alert con el error
-          console.log(error);
+          Swal.fire("error when deleting product')
         }
       }
     });

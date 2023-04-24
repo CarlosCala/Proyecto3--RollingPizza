@@ -3,8 +3,6 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const Order = ({ order }) => {
-  console.log(order.total);
-
   const products = order.order;
 
   const ordenes = products.map((prod) => {
