@@ -9,17 +9,11 @@ import axios from "../../../../config/axiosInit";
 const OrderStatus = ({ UrlOrder, getApiOrder }) => {
   //steate
   const [order, setOrder] = useState({});
-  //useParams
-  const {_id} = useParams();
-  //variables de referencia - references
-  const orderNameRef = useRef("");
-  const orderPriceRef = useRef("");
-  const orderQuantityRef = useRef("")
 
+  const {_id} = useParams();
 
   const navigate = useNavigate();
 
-  //llamado a la api para obtener el usuario con su id
 
   useEffect(() => {
     getOne();
@@ -36,14 +30,15 @@ const OrderStatus = ({ UrlOrder, getApiOrder }) => {
     }
   };
 
+
   const handleSubmit = (e) => {
     e.preventDefault();
 
     const orderUpdate = {
-      productName: orderNameRef.current.value,
-      price: orderPriceRef.current.value,
-      quantity: orderQuantityRef.current.value,
-      delivery : order.delivery,
+      order: order,
+      email: order.email,
+      total: order.totalPrice,
+      delivery : order.delivery
     };
 
     Swal.fire({
@@ -88,32 +83,14 @@ const OrderStatus = ({ UrlOrder, getApiOrder }) => {
         <hr />
         {/* Form Product */}
         <Form className="my-5" onSubmit={handleSubmit}>
-          <Form.Group className="mb-3" controlId="formBasicEmail">
+         <Form.Group className="mb-3" controlId="formBasicEmail">
             <Form.Label>OrderProduct* </Form.Label>
             <Form.Control
               type="text"
-              defaultValue={order.productName}
-              ref={orderNameRef}
+              defaultValue={order._id}
+              // ref={orderNameRef}
               disabled
                           />
-          </Form.Group>
-          <Form.Group className="mb-3" controlId="formBasicPassword">
-            <Form.Label>price*</Form.Label>
-            <Form.Control
-              type="text"
-              defaultValue={order.price}
-              ref={orderPriceRef}
-              disabled
-            />
-          </Form.Group>
-          <Form.Group className="mb-3" controlId="formBasicPassword">
-            <Form.Label>Quantity*</Form.Label>
-            <Form.Control
-              type="text"
-              defaultValue={order.quantity}
-              ref={orderQuantityRef}
-              disabled
-            />
           </Form.Group>
           <Form.Group className="mb-3" controlId="formBasicCheckbox">
             <Form.Label>Delivery*</Form.Label>
