@@ -6,23 +6,18 @@ import Swal from "sweetalert2";
 import axios from "../../../config/axiosInit";
 
 const ProductDetail = ({ URL, getApi, UrlOrder, getApiOrder }) => {
-  //steate
   const [product, setProduct] = useState({});
-  //useParams
   const { _id } = useParams();
-  //variables de referencia - references
   const productNameRef = useRef("");
   const productPriceRef = useRef("");
 
   const navigate = useNavigate();
-  //llamado a la api para obtener el producto con su id
   useEffect(() => {
     getOne();
   }, []);
 
   const getOne = async () => {
     try {
-      //peticion con axios
       const res = await axios.get(`${URL}/${_id}`);
       const productApi = await res.data;
       setProduct(productApi);
@@ -30,16 +25,16 @@ const ProductDetail = ({ URL, getApi, UrlOrder, getApiOrder }) => {
       console.log(error);
     }
   };
+
+  const orders = JSON.parse(localStorage.getItem("order")) || [];
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    //enviar los datos
+
     const newOrder = {
-      // para un solo estado con varios inputs
       productName: productNameRef.current.value,
       price: productPriceRef.current.value,
-      quantity: product.quantity,
     };
-
     Swal.fire({
       title: "Are you sure you want to order this?",
       text: "You won't be able to revert this!",
@@ -51,16 +46,14 @@ const ProductDetail = ({ URL, getApi, UrlOrder, getApiOrder }) => {
     }).then(async (result) => {
       if (result.isConfirmed) {
         try {
-          //  peticion con axios
-          const res = await axios.post(UrlOrder, newOrder);
-          if (res.status === 201) {
-            Swal.fire("sent", "your order has been successfully shipped");
-          }
-          getApiOrder();
-          e.target.reset(); // el e.target en este caso por el submit es el form
-          //recarca la tabla
-          // getApiOrder();
-          //navega hasta la tabla de productos
+          localStorage.setItem("order", JSON.stringify([...orders, newOrder]));
+
+          Swal.fire({
+            icon: "success",
+            title: "Sent",
+            text: "Check your orders page!",
+          });
+
           navigate("/");
         } catch (error) {
           Swal.fire({
@@ -72,10 +65,11 @@ const ProductDetail = ({ URL, getApi, UrlOrder, getApiOrder }) => {
       }
     });
   };
+
   return (
     <Container className="containerProductDetail">
       <Row className="j">
-        <Col >
+        <Col>
           <Card
             // style={{ width: "25rem", height: "30rem" }}
             className="bg-cardDetail text-white cardDetail"
@@ -87,13 +81,11 @@ const ProductDetail = ({ URL, getApi, UrlOrder, getApiOrder }) => {
             />
             <Card.Body className="text-center cardBodyDetail">
               <Card.Title>{product.productName}</Card.Title>
-              <Card.Text className="mt-3">
-                {product.description}
-              </Card.Text>
+              <Card.Text className="mt-3">{product.description}</Card.Text>
             </Card.Body>
           </Card>
         </Col>
-        <Col >
+        <Col className="d-flex flex-column justify-content-center">
           {/* Form Product */}
           <Form className="my-5" onSubmit={handleSubmit}>
             <Form.Group className="mb-3" controlId="formBasicEmail">
@@ -115,18 +107,6 @@ const ProductDetail = ({ URL, getApi, UrlOrder, getApiOrder }) => {
                 defaultValue={product.price}
                 ref={productPriceRef}
                 disabled
-              />
-            </Form.Group>
-            <Form.Group className="mb-3" controlId="formBasicCheckbox">
-              <Form.Label>quantity*</Form.Label>
-              <Form.Control
-                type="number"
-                placeholder="Ej: 3"
-                name="quantity"
-                min="1"
-                onChange={({ target }) =>
-                  setProduct({ ...product, quantity: target.value })
-                }
               />
             </Form.Group>
             <div className="text-end">
