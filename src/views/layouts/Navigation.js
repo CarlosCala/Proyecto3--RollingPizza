@@ -39,6 +39,9 @@ const Navigation = ({ loggedUser, setLoggedUser }) => {
     </>
   ) : loggedUser && Object.keys(loggedUser).length > 0 ? (
     <>
+    <Link className="nav-link" to="/order/orders">
+      Orders
+    </Link>
     <Link className="nav-link" to="/contact">
       ContacUs
     </Link>

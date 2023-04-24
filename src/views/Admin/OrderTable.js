@@ -8,7 +8,6 @@ const OrderTable = ({ orders, UrlOrder, getApiOrder }) => {
   useEffect(()=>{
     getApiOrder()
   },[])
-
   
   return (
     <>
