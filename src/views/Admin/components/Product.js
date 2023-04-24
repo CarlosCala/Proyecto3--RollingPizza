@@ -23,7 +23,7 @@ const Product = ({ product, URL, getApi }) => {
             getApi();
           }
         } catch (error) {
-          Swal.fire("error when deleting product')
+          Swal.fire("error when deleting product")
         }
       }
     });
