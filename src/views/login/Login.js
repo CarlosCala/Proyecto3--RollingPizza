@@ -21,9 +21,6 @@ const Login = ({ setLoggedUser }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    //Valido los campos
-    //===========  en helpers realizar las validaciones para email
-    //Envio los datos
     try {
       setLoading(true);
       const res = await axios.post(`${URL}/login`, {
@@ -34,7 +31,6 @@ const Login = ({ setLoggedUser }) => {
       if (res.status === 200) {
         Swal.fire("Logged!", "Your user has been logged.", "success");
         const data = res.data;
-        //guardar en localStorage el token
         if (data.admin === "administrador") {
           localStorage.setItem("user-token", JSON.stringify(data));
           setLoggedUser(data);

@@ -1,28 +1,14 @@
-import React, { useEffect, useRef, useState } from "react";
-import { Button, Form, Modal } from "react-bootstrap";
-import { Link, useNavigate, useParams } from "react-router-dom";
-
-import Swal from "sweetalert2";
-import axios from "../../../config/axiosInit";
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
 
 const Order = ({ order, UrlOrder, getApiOrder }) => {
-
   const [show, setShow] = useState(false);
 
-  console.log(order.total);
+  const products = order.order;
 
-const products = order.order
-
-const ordenes = products.map((prod) => {
-  return  prod.productName + " - "
-}
-  )
-
-  console.log(ordenes);
-
-
-
-
+  const ordenes = products.map((prod) => {
+    return prod.productName + " - ";
+  });
 
 
   return (
@@ -31,9 +17,9 @@ const ordenes = products.map((prod) => {
       <td>{ordenes}</td>
       <td>${order.total}</td>
       <td>{order.email}</td>
-      <td className="d-flex justify-content-between">
+      <td className="d-flex flex-wrap justify-content-between text-center">
         {order.delivery}
-        <Link to={`/order/status/${order._id}`} className="btn btn-warning">
+        <Link to={`/order/status/${order._id}`} className="btn btn-warning mt-2">
           Realized
         </Link>
       </td>
