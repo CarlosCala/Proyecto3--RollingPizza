@@ -6,17 +6,31 @@ import Swal from "sweetalert2";
 import axios from "../../../config/axiosInit";
 
 const Order = ({ order, UrlOrder, getApiOrder }) => {
+
   const [show, setShow] = useState(false);
-  // const handleClose = () => setShow(false);
-  // const handleShow = () => setShow(true);
+
+  console.log(order.total);
+
+const products = order.order
+
+const ordenes = products.map((prod) => {
+  return  prod.productName + " - "
+}
+  )
+
+  console.log(ordenes);
+
+
+
+
 
 
   return (
     <tr>
       <td>{order._id}</td>
-      <td>{order.productName}</td>
-      <td>${order.price}</td>
-      <td>{order.quantity}</td>
+      <td>{ordenes}</td>
+      <td>${order.total}</td>
+      <td>{order.email}</td>
       <td className="d-flex justify-content-between">
         {order.delivery}
         <Link to={`/order/status/${order._id}`} className="btn btn-warning">
