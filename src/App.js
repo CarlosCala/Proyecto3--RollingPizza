@@ -18,6 +18,7 @@ import Error404 from "./views/layouts/Error404";
 import OrderTable from "./views/Admin/OrderTable";
 import OrderStatus from "./views/Admin/components/orderEdit/OrderStatus";
 import ContactUs from "./views/home/contactUs/ContactUs";
+import Orders from "./views/home/orders/Orders";
 
 function App() {
   const [products, setProducts] = useState([]);
@@ -34,6 +35,7 @@ function App() {
     getApiUser();
     isLoged();
   }, []);
+
 
   const isLoged = () => {
     if (!JSON.parse(localStorage.getItem("user-token"))) {
@@ -114,6 +116,19 @@ function App() {
                 />
               }
             />
+
+            <Route
+              exact
+              path="/order/orders"
+              element={
+                <Orders
+                  UrlOrder={UrlOrder}
+                  orders={orders}
+                  getApiOrder={getApiOrder}
+                />
+              }
+            />
+
             <Route
               exact
               path="/order/table"

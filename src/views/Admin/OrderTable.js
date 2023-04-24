@@ -8,7 +8,6 @@ const OrderTable = ({ orders, UrlOrder, getApiOrder }) => {
   useEffect(()=>{
     getApiOrder()
   },[])
-
   
   return (
     <>
@@ -51,9 +50,9 @@ const OrderTable = ({ orders, UrlOrder, getApiOrder }) => {
             <thead>
               <tr>
                 <th>N.</th>
-                <th>ProductName</th>
-                <th>Price</th>
-                <th>Quantity</th>
+                <th>Orders</th>
+                <th>total price</th>
+                <th>client</th>
                 <th>Delivery</th>
               </tr>
             </thead>
