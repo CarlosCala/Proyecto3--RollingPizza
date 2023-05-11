@@ -26,8 +26,9 @@ const Home = ({ products, loggedUser }) => {
             ))}
           </Row>
         ) : (
-          <div className="no-products-found d-flex align-items-center justify-content-center">
-            <h1>🍕 No products found 🍕</h1>
+          <div className="no-products-found text-center align-items-center justify-content-center">
+            <span class="loaderProducts"></span>
+            <h1>🍕  Loading Products🍕</h1>
           </div>
         )}
       </Container>

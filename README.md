@@ -24,6 +24,11 @@ _Instalar las dependencias_
 ```
 npm i
 ```
+_Inicializar_
+
+```
+npm start
+```
 
 ### Logueo 🔧
 
